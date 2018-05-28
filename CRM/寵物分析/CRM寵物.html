@@ -1,0 +1,64 @@
+﻿<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: '寵物品種分析'
+    },
+    subtitle: {
+        text: 'Source: minar-database'
+    },
+    xAxis: {
+        categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'K'
+        },
+        labels: {
+            formatter: function () {
+                return this.value / 1000;
+            }
+        }
+    },
+    tooltip: {
+        split: true,
+        valueSuffix: ' 隻'
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                lineWidth: 1,
+                lineColor: '#666666'
+            }
+        }
+    },
+    series: [{
+        name: '小型犬',
+        data: [502, 635, 809, 947, 1402, 3634, 5268]
+    }, {
+        name: '中型犬',
+        data: [106, 107, 111, 133, 221, 767, 1766]
+    }, {
+        name: '大型犬',
+        data: [163, 203, 276, 408, 547, 729, 628]
+    }, {
+        name: '超大型犬',
+        data: [18, 31, 54, 156, 339, 818, 1201]
+    }]
+});
+
+</script>

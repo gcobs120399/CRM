@@ -1,0 +1,31 @@
+
+<div id="highcharts-9cd35b01-c9ed-4a6f-bfc0-07895fb11434"></div>
+<script>
+    (function () {
+        var files = ["https://code.highcharts.com/stock/highstock.js", "https://code.highcharts.com/highcharts-more.js", "https://code.highcharts.com/highcharts-3d.js", "https://code.highcharts.com/modules/data.js", "https://code.highcharts.com/modules/exporting.js", "https://code.highcharts.com/modules/funnel.js", "https://code.highcharts.com/modules/annotations.js", "https://code.highcharts.com/modules/solid-gauge.js"], loaded = 0; if (typeof window["HighchartsEditor"] === "undefined") { window.HighchartsEditor = { ondone: [cl], hasWrapped: false, hasLoaded: false }; include(files[0]); } else { if (window.HighchartsEditor.hasLoaded) { cl(); } else { window.HighchartsEditor.ondone.push(cl); } } function isScriptAlreadyIncluded(src) { var scripts = document.getElementsByTagName("script"); for (var i = 0; i < scripts.length; i++) { if (scripts[i].hasAttribute("src")) { if ((scripts[i].getAttribute("src") || "").indexOf(src) >= 0 || (scripts[i].getAttribute("src") === "http://code.highcharts.com/highcharts.js" && src === "https://code.highcharts.com/stock/highstock.js")) { return true; } } } return false; } function check() { if (loaded === files.length) { for (var i = 0; i < window.HighchartsEditor.ondone.length; i++) { try { window.HighchartsEditor.ondone[i](); } catch (e) { console.error(e); } } window.HighchartsEditor.hasLoaded = true; } } function include(script) { function next() { ++loaded; if (loaded < files.length) { include(files[loaded]); } check(); } if (isScriptAlreadyIncluded(script)) { return next(); } var sc = document.createElement("script"); sc.src = script; sc.type = "text/javascript"; sc.onload = function () { next(); }; document.head.appendChild(sc); } function each(a, fn) { if (typeof a.forEach !== "undefined") { a.forEach(fn); } else { for (var i = 0; i < a.length; i++) { if (fn) { fn(a[i]); } } } } var inc = {}, incl = []; each(document.querySelectorAll("script"), function (t) { inc[t.src.substr(0, t.src.indexOf("?"))] = 1; }); function cl() {
+            if (typeof window["Highcharts"] !== "undefined") {
+                Highcharts.setOptions({ lang: {} }); var options = { "chart": { "type": "bar" }, "title": { "text": "保健產品" }, "xAxis": [{ "categories": ["優寶睛", "優寶心", "優寶身", "優寶骨", "優寶膚"], "title": {}, "labels": { "format": "{value}" } }], "yAxis": [{ "min": 0, "title": { "text": "" }, "labels": {} }], "legend": { "reversed": true }, "plotOptions": { "series": { "stacking": "normal", "animation": false, "dataLabels": {} } }, "series": [{ "name": "超大型犬", "turboThreshold": 0, "_colorIndex": 0, "marker": {} }, { "name": "大型犬", "turboThreshold": 0, "_colorIndex": 1 }, { "name": "中型犬", "turboThreshold": 0, "_colorIndex": 2 }, { "name": "小型犬", "turboThreshold": 0, "_colorIndex": 3 }], "data": { "csv": "\"Category\";\"超大型犬\";\"大型犬\";\"中型犬\";\"小型犬\"\n\"優寶睛\";95;512;424;431\n\"優寶心\";123;616;434;456\n\"優寶身\";204;718;345;123\n\"優寶骨\";367;412;241;244\n\"優寶膚\";422;578;612;546", "googleSpreadsheetKey": false, "googleSpreadsheetWorksheet": false }, "subtitle": {}, "exporting": {}, "lang": {} };/*
+// Sample of extending options:
+Highcharts.merge(true, options, {
+    chart: {
+        backgroundColor: "#bada55"
+    },
+    plotOptions: {
+        series: {
+            cursor: "pointer",
+            events: {
+                click: function(event) {
+                    alert(t his.name + " clicked\n" +
+                          "Alt: " + event.altKey + "\n" +
+                          "Control: " + event.ctrlKey + "\n" +
+                          "Shift: " + event.shiftKey + "\n");
+                }
+            }
+        }
+    }
+});
+*/new Highcharts.Chart("highcharts-9cd35b01-c9ed-4a6f-bfc0-07895fb11434", options);
+            }
+        }
+    })();
+</script>
