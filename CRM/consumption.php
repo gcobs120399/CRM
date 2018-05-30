@@ -36,7 +36,8 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body style="text-align:left;font-size:18px;background-image: url(img/46505.png);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
 <!--巡覽列black-->
@@ -77,16 +78,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="text-align: center"><h1>消費行為</h1></div>
     <div style="margin-left:0px auto;margin-right:0px auto;">
-      <div style="display: table-cell;vertical-align: middle;">
-        <table>
-          <tr>
-          <td style="font-size: 30px">
-           
-            </p>
-          </td>
-          </tr>
-        </table>
-    </div>
+      <div id="container"></div><!--折線圖-->
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
 
@@ -106,6 +98,64 @@ burger.addEventListener('click', function (e) {
     e.preventDefault();
     document.body.classList.toggle('open');
     burger.classList.toggle('open');
+});
+</script>
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: '寵物品種分析'
+    },
+    subtitle: {
+        text: 'Source: minar-database'
+    },
+    xAxis: {
+        categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: false
+        }
+    },
+    yAxis: {
+        title: {
+            text: '隻'
+        },
+        labels: {
+            formatter: function () {
+                return this.value  ;
+            }
+        }
+    },
+    tooltip: {
+        split: true,
+        valueSuffix: ' 隻'
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                lineWidth: 1,
+                lineColor: '#666666'
+            }
+        }
+    },
+    series: [{
+        name: '小型犬',
+        data: [502, 635, 809, 947, 1402, 3634, 5268]
+    }, {
+        name: '中型犬',
+        data: [106, 107, 111, 133, 221, 767, 1766]
+    }, {
+        name: '大型犬',
+        data: [163, 203, 276, 408, 547, 729, 628]
+    }, {
+        name: '超大型犬',
+        data: [18, 31, 54, 156, 339, 818, 1201]
+    }]
 });
 </script>
 </html>
