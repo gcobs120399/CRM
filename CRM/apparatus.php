@@ -200,9 +200,9 @@ var chart = Highcharts.chart('container',{
     },
     tooltip: {
         // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-        '<td style="padding:0"><b>{point.y:.1f} 次</b></td></tr>',
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +
+        '{point.y:.1f} 次<br>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
