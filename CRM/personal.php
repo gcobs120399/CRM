@@ -73,11 +73,11 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <br><br><br>
 <h1 style="text-align:center;">訂單分析</h1>
 <hr>
-<div class=" col-xs-2 col-md-2">
-  <a href="#">訂單金額分析</a><br>
-  <a href="#">合買分析</a><br>
-  <a href="#">續買分析</a><br>
-  <a href="#">促銷成效分析</a><br>
+<div class=" col-xs-2 col-md-2" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">訂單金額分析</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">合買分析</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">續買分析</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">促銷成效分析</a><br>
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->

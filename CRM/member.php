@@ -73,12 +73,12 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 
 <br><br><br>
 <h1 style="text-align:center;">客群分析</h1><hr>
-<div class=" col-xs-1 col-md-1">
-  <a href="#">網頁瀏覽</a><br>
-  <a href="#">客群屬性</a><br>
-  <a href="#">客群購買</a><br>
-  <a href="#">購物車紀錄</a><br>
-  <a href="#">客戶忠誠度</a>
+<div class=" col-xs-2 col-md-2" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">網頁瀏覽</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">客群屬性</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">客群購買</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">購物車紀錄</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">客戶忠誠度</a>
 </div>
 <div class="container col-xs-10 col-md-10">
   <!--內文-->
