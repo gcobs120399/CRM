@@ -7,7 +7,7 @@ if(isset($_SESSION["loginMember"]) && ($_SESSION["loginMember"]!="")){
   /*if($_SESSION["memberLevel"]=="member"){*/
     header("Location: user.php");
   /*}else{
-    header("Location: member_admin.php");
+    header("Location: user.php");
   }*/
 }
 //執行會員登入
@@ -38,15 +38,11 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
         setcookie("remPass", $_POST["passwd"], time()-100);
       }
     }
-    /*//若帳號等級為 member 則導向會員中心
-    if($_SESSION["memberLevel"]=="member"){
-      header("Location: member_center.php");
-    //否則則導向管理中心
+    //若帳號等級為 member 則導向會員中心
+    if($_SESSION["memberLevel"]=="admin"){
+      header("Location: user.php");
     }else{
-      header("Location: member_admin.php");
-    }*/
-  }else{
-    header("Location: index.php?errMsg=1");
+    header("Location: index.php?errMsg=1");}
   }
 }
 ?>
