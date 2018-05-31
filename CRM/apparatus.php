@@ -188,7 +188,7 @@ var chart = Highcharts.chart('container',{
     yAxis: {
         min: 60,
         title: {
-            text: '使用量(次數)',
+            text: '平均使用量(次數)',
             style:{
                 fontSize:'18px'
               }
