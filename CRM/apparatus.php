@@ -101,15 +101,15 @@ $total_pages = ceil($total_records/$pageRow_records);
 <br><br><br>
 <h1 style="text-align:center;">使用者裝置紀錄</h1>
 <hr>
-<div class=" col-xs-2 col-md-2" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
+<div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50"><img src="newimg/20.png" alt="LOGO" width="80" height="50">視線停留時間</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">視線停留時間</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化紀錄器</a><br>
   <a href="apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者裝置紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區IP紀錄</a>
 </div>
-<div class="container col-xs-10 col-md-10">
+<div class="container col-xs-8 col-md-8">
   <!--內文-->
   
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
