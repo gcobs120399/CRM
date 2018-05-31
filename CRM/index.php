@@ -54,7 +54,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>顧客關係管理之寵物飼料管理</title>
-<link rel="icon" href="./img/title.png">
+<link rel="icon" href="./newimg/02.png">
 <!--呆-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +69,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/menu.css"><!--菜單CSS-->
 </head>
-<body style="text-align:left;font-size:18px;background-image: url(img/46505.png);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
+<body style="text-align:left;font-size:18px;background-image: url(newimg/46505.png);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
 <!--巡覽列nav-->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
