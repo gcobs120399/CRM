@@ -65,7 +65,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/menu.css"><!--菜單CSS-->
 </head>
-<body style="text-align:left;font-size:18px;background-image: url(newimg/bg.gif);background-size: auto;background-attachment: fixed; font-family: 微軟正黑體;margin:30px; background-position: center center;background-repeat: no-repeat;">
+<body style="text-align:left;font-size:18px;background-image: url(newimg/bg.gif);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
 <!--巡覽列nav-->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
