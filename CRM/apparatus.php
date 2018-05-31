@@ -16,6 +16,34 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["loginMember"]."'";
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
+
+$query_RecFlower = "SELECT * FROM `apparatus`";
+$RecFlower = mysql_query($query_RecFlower);
+$row_RecFlower=mysql_fetch_assoc($RecFlower);
+//選取所有一般會員資料
+//預設每頁筆數
+$pageRow_records = 12;
+//預設頁數
+$num_pages = 1;
+//若已經有翻頁，將頁數更新
+if (isset($_GET['page'])) {
+  $num_pages = $_GET['page'];
+}
+//本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
+$startRow_records = ($num_pages -1) * $pageRow_records;
+//未加限制顯示筆數的SQL敘述句
+$query_RecFlower = "SELECT * FROM `apparatus`";
+//加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
+$query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
+//以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
+$RecFlower = mysql_query($query_limit_RecFlower);
+//以未加上限制顯示筆數的SQL敘述句查詢資料到 $all_resultMember 中
+$all_RecFlower = mysql_query($query_RecFlower);
+//計算總筆數
+$total_records = mysql_num_rows($all_RecFlower);
+//計算總頁數=(總筆數/每頁筆數)後無條件進位。
+$total_pages = ceil($total_records/$pageRow_records);
+
 ?>
 <html lang="en">
 <head>
@@ -61,28 +89,61 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li><a href="user.php">使用者行為</a></li>
+        <li class="active"><a href="user.php">使用者行為</a></li>
         <li><a href="member.php">客群分析</a></li>
         <li><a href="consumption.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
-        <li class="active"><a href="sell.php">行銷分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">行銷分析</h1>
+<h1 style="text-align:center;">使用者裝置紀錄</h1>
 <hr>
-<div class=" col-xs-1 col-md-1"></div>
-<div class="container col-xs-10 col-md-10">
+<div class=" col-xs-2 col-md-2">
+  <a href="#">瀏覽路徑紀錄</a><br>
+  <a href="#">視線停留時間</a><br>
+  <a href="#">購物車歷史紀錄</a><br>
+  <a href="#">客製化紀錄器</a><br>
+  <a href="apparatus.php">使用者裝置紀錄</a><br>
+  <a href="#">使用者地區IP紀錄</a>
+</div>
+<div class="container col-xs-8 col-md-8">
   <!--內文-->
+  
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
+      <br>
+      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
+    <tr>
+    <td class="tdbline">
+    <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
+      <tr valign="top">
+        <td class="tdrline"><p class="title" style="text-align: center;">使用者裝置紀錄</p>
+          <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
+            <tr >
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>月份</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>手機(次)</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>電腦(次)</p></th>
+            </tr>
+      <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
+            <tr>
+              <td width="10%" align="center" bgcolor="#FFFFFF">
+                <p><?php echo $row_RecFlower["a_month"];?></a></p>
+              </td>
+              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["a_pc"]; ?>
+                </p></td>
+              <td width="10%" align="center" bgcolor="#FFFFFF"><p><?php echo $row_RecFlower["a_phone"];?></p></td>
+            </tr>
+      <?php }?>
+          </table>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
 </div><!--div放白色透明度60%結束-->
+<div class=" col-xs-2 col-md-2"></div>
 <div class="col-xs-12 col-md-12" style="text-align: center;">© 2018 顧客關係管理之寵物飼料管理 ©</div>
 </div>
 <!--呆的巡覽列-->
@@ -101,60 +162,62 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-Highcharts.chart('container', {
+var chart = Highcharts.chart('container',{
     chart: {
-        type: 'area'
+        type: 'column'
     },
     title: {
-        text: '寵物品種分析'
+        text: '2017使用者裝置紀錄',
+        style:{
+                fontSize:'24px'
+              }
     },
     subtitle: {
-        text: 'Source: minar-database'
     },
     xAxis: {
-        categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
-        }
+        categories: [
+            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
+        ],
+        crosshair: true,
+        labels:{
+              style:{
+                fontSize:'18px'
+              }
+            }
     },
     yAxis: {
+        min: 60,
         title: {
-            text: '隻'
-        },
-        labels: {
-            formatter: function () {
-                return this.value  ;
+            text: '使用量(次數)',
+            style:{
+                fontSize:'18px'
+              }
+        },labels:{
+              style:{
+                fontSize:'18px'
+              }
             }
-        }
     },
     tooltip: {
-        split: true,
-        valueSuffix: ' 隻'
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y:.1f} 次</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
     },
     plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
+        column: {
+            borderWidth: 0
         }
     },
     series: [{
-        name: '小型犬',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
+        name: '電腦',
+        data: [86, 89, 90, 89, 100, 83, 96, 106, 103, 110, 95, 101]
     }, {
-        name: '中型犬',
-        data: [106, 107, 111, 133, 221, 767, 1766]
-    }, {
-        name: '大型犬',
-        data: [163, 203, 276, 408, 547, 729, 628]
-    }, {
-        name: '超大型犬',
-        data: [18, 31, 54, 156, 339, 818, 1201]
+        name: '手機',
+        data: [83, 88, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
     }]
 });
 </script>

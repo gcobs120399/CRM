@@ -5,7 +5,7 @@ session_start();
 //檢查是否經過登入，若有登入則重新導向
 if(isset($_SESSION["loginMember"]) && ($_SESSION["loginMember"]!="")){
   /*if($_SESSION["memberLevel"]=="member"){*/
-    header("Location: member.php");
+    header("Location: user.php");
   /*}else{
     header("Location: member_admin.php");
   }*/
@@ -54,7 +54,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>顧客關係管理之寵物飼料管理</title>
-<link rel="icon" href="./newimg/02.png">
+<link rel="icon" href="./img/title.png">
 <!--呆-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,7 +69,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/menu.css"><!--菜單CSS-->
 </head>
-<body style="text-align:left;font-size:18px;background-image: url(newimg/bg.gif);background-size: auto;background-attachment: fixed; font-family: 微軟正黑體;margin:30px; background-position: center center;background-repeat: no-repeat;">
+<body style="text-align:left;font-size:18px;background-image: url(img/46505.png);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
 <!--巡覽列nav-->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -80,12 +80,12 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
         <span class="icon-bar"></span> 
         <span class="icon-bar"></span> 
       </button> 
-      <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
+      <a class="navbar-brand" href="index.php">顧客關係管理之寵物飼料管理</a>
     </div>
   </div>
 </nav>
 <br><br>
-<h1 style="text-align:center;"><img src="newimg/18.png" alt="LOGO" width="80" height="50">顧客關係管理之寵物飼料管理</h1>
+<h1 style="text-align:center;"><img src="img/LOGO.png" alt="LOGO" width="80" height="50">顧客關係管理之寵物飼料管理</h1>
 <div class="col-xs-2"></div>
 <div style="background: rgba(100%,100%,100%,0.6);" class="col-xs-12"><!--div放白色背景透明度60%開始-->
 <table width="550" border="0" align="center" cellpadding="4" cellspacing="0">

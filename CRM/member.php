@@ -26,7 +26,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <script src="./js/ie-emulation-modes-warning.js"></script> 
-  <link rel="icon" href="./newimg/02.png">
+  <link rel="icon" href="./img/title.png">
 <!--呆-->
   <meta  http-equiv="Content-Type" content="text/html;charset=utf-8">
   <link href="style.css" rel="stylesheet" type="text/css">
@@ -39,12 +39,12 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
-<body style="text-align:left;font-size:18px;background-image: url(newimg/bg.gif);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
+<body style="text-align:left;font-size:18px;background-image: url(img/46505.png);background-size: cover;background-attachment: fixed; font-family: 微軟正黑體;margin:30px">
 <!--巡覽列black-->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-    <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
+     <a class="navbar-brand" href="member_center.php" style="font-size: 24pt;">顧客關係管理之寵物飼料管理</a>
     </div>
   </div>
 </nav>
@@ -61,29 +61,34 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="member.php">客群分析</a></li>
         <li><a href="user.php">使用者行為</a></li>
-        <li><a href="consumption.php">消費行為</a></li>
-        <li><a href="personal.php">個人化行銷</a></li>
-        <li><a href="sell.php">行銷分析</a></li>
+        <li class="active"><a href="member.php">客群分析</a></li>
+        <li><a href="consumption.php">寵物分析</a></li>
+        <li><a href="personal.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<div class=" col-xs-1 col-md-1"></div>
+
+<br><br><br>
+<h1 style="text-align:center;">客群分析</h1><hr>
+<div class=" col-xs-1 col-md-1">
+  <a href="#">網頁瀏覽</a><br>
+  <a href="#">客群屬性</a><br>
+  <a href="#">客群購買</a><br>
+  <a href="#">購物車紀錄</a><br>
+  <a href="#">客戶忠誠度</a>
+</div>
 <div class="container col-xs-10 col-md-10">
   <!--內文-->
-  <h1 style="text-align:center;">顧客關係管理之寵物飼料管理</h1>
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
-    <div style="text-align: center"><h1>客群分析</h1></div>
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
-
-  <footer align="center" style="font-size: 18px;">© 2018 顧客關係管理之寵物飼料管理 ©</footer>
 </div><!--div放白色透明度60%結束-->
+<div class="col-xs-12 col-md-12" style="text-align: center;">© 2018 顧客關係管理之寵物飼料管理 ©</div>
 </div>
 <!--呆的巡覽列-->
 <script src="./js/jquery.min.js"></script>
@@ -106,10 +111,13 @@ Highcharts.chart('container', {
         type: 'area'
     },
     title: {
-        text: '寵物品種分析'
+        text: '客群分析',
+        style:{
+                fontSize:'24px'
+              }
     },
     subtitle: {
-        text: 'Source: minar-database'
+        text: ''
     },
     xAxis: {
         categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
