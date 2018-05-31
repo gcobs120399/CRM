@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `apparatus`";
+$query_RecFlower = "SELECT * FROM `stay`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `apparatus`";
+$query_RecFlower = "SELECT * FROM `stay`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -99,7 +99,7 @@ $total_pages = ceil($total_records/$pageRow_records);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">使用者裝置紀錄</h1>
+<h1 style="text-align:center;">網頁停留時間</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
@@ -121,22 +121,20 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">平均使用者裝置紀錄</p>
+        <td class="tdrline"><p class="title" style="text-align: center;">平均網頁停留時間</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>手機(次)</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>電腦(次)</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>平均停留時間(秒)</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["a_month"];?></a></p>
+                <p><?php echo $row_RecFlower["s_month"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["a_pc"]; ?>
+                <?php echo $row_RecFlower["s_count"]; ?>
                 </p></td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p><?php echo $row_RecFlower["a_phone"];?></p></td>
             </tr>
       <?php }?>
           </table>
@@ -162,12 +160,12 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container',{
+var chart = Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'line'
     },
     title: {
-        text: '2017使用者裝置紀錄',
+        text: '2017平均顧客網頁停留時間',
         style:{
                 fontSize:'24px'
               }
@@ -175,10 +173,7 @@ var chart = Highcharts.chart('container',{
     subtitle: {
     },
     xAxis: {
-        categories: [
-            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
-        ],
-        crosshair: true,
+        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         labels:{
               style:{
                 fontSize:'18px'
@@ -186,38 +181,31 @@ var chart = Highcharts.chart('container',{
             }
     },
     yAxis: {
-        min: 60,
         title: {
-            text: '平均使用量(次數)',
+            text: '平均時間(秒)',
             style:{
                 fontSize:'18px'
               }
-        },labels:{
+        },
+        labels:{
               style:{
                 fontSize:'18px'
               }
             }
     },
-    tooltip: {
-        // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table><br>',
-        pointFormat: '{series.name}:' +
-        '{point.y:.1f} 次<br>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
     plotOptions: {
-        column: {
-            borderWidth: 0
+        line: {
+            dataLabels: {
+                // 開啟數據標籤
+                enabled: true
+            },
+            // 關閉滑鼠追蹤，提示框、點擊事件
+            enableMouseTracking: false
         }
     },
     series: [{
-        name: '電腦',
-        data: [86, 89, 90, 89, 100, 83, 96, 106, 103, 110, 95, 101]
-    }, {
-        name: '手機',
-        data: [83, 88, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
+        name: '時間軸',
+        data: [25.0, 29.9, 29.5, 30.5, 28.4, 24.5, 25.2, 26.5, 23.3, 24.3, 26.9, 29.6]
     }]
 });
 </script>
