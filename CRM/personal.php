@@ -26,7 +26,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <script src="./js/ie-emulation-modes-warning.js"></script> 
-  <link rel="icon" href="./img/title.png">
+  <link rel="icon" href="./newimg/02.png">
 <!--呆-->
   <meta  http-equiv="Content-Type" content="text/html;charset=utf-8">
   <link href="style.css" rel="stylesheet" type="text/css">
@@ -44,8 +44,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-     <a class="navbar-brand" href="member_center.php" style="font-size: 24pt;">顧客關係管理之寵物飼料管理</a>
-    </div>
+    <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>    </div>
   </div>
 </nav>
 <!--巡覽列white-->
