@@ -5,7 +5,7 @@ session_start();
 //檢查是否經過登入，若有登入則重新導向
 if(isset($_SESSION["loginMember"]) && ($_SESSION["loginMember"]!="")){
   /*if($_SESSION["memberLevel"]=="member"){*/
-    header("Location: user.php");
+    header("Location: member.php");
   /*}else{
     header("Location: member_admin.php");
   }*/

@@ -61,37 +61,29 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="user.php">使用者行為</a></li>
         <li><a href="member.php">客群分析</a></li>
-        <li><a href="consumption.php">寵物分析</a></li>
-        <li><a href="personal.php">訂單分析</a></li>
+        <li class="active"><a href="user.php">使用者行為</a></li>
+        <li><a href="consumption.php">消費行為</a></li>
+        <li><a href="personal.php">個人化行銷</a></li>
+        <li><a href="sell.php">行銷分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<br><br><br>
-<h1 style="text-align:center;">使用者行為</h1>
-<hr>
-<div class=" col-xs-2 col-md-2">
-  <a href="#">瀏覽路徑紀錄</a><br>
-  <a href="#">視線停留時間</a><br>
-  <a href="#">購物車歷史紀錄</a><br>
-  <a href="#">客製化紀錄器</a><br>
-  <a href="#">使用者裝置紀錄</a><br>
-  <a href="#">使用者地區IP紀錄</a>
-</div>
-<div class="container col-xs-8 col-md-8">
+<div class=" col-xs-1 col-md-1"></div>
+<div class="container col-xs-10 col-md-10">
   <!--內文-->
-  
+  <h1 style="text-align:center;">顧客關係管理之寵物飼料管理</h1>
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
+    <div style="text-align: center"><h1>使用者行為</h1></div>
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
+
+  <footer align="center" style="font-size: 18px;">© 2018 顧客關係管理之寵物飼料管理 ©</footer>
 </div><!--div放白色透明度60%結束-->
-<div class=" col-xs-2 col-md-2"></div>
-<div class="col-xs-12 col-md-12" style="text-align: center;">© 2018 顧客關係管理之寵物飼料管理 ©</div>
 </div>
 <!--呆的巡覽列-->
 <script src="./js/jquery.min.js"></script>
