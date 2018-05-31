@@ -73,20 +73,20 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <br><br><br>
 <h1 style="text-align:center;">使用者行為</h1>
 <hr>
-<div class=" col-xs-2 col-md-2" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">瀏覽路徑紀錄</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">視線停留時間</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">購物車歷史紀錄</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">客製化紀錄器</a><br>
-  <a href="apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">使用者裝置紀錄</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red">使用者地區IP紀錄</a>
+<div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">視線停留時間</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化紀錄器</a><br>
+  <a href="apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者裝置紀錄</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區IP紀錄</a>
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
   
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
-      <div id="container"></div><!--折線圖--> style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"
+      <div id="container"></div><!--折線圖-->
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
 </div><!--div放白色透明度60%結束-->
