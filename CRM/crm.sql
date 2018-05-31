@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-05-31 05:45:44
+-- 產生時間： 2018-05-31 08:10:03
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -19,6 +19,38 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `crm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `apparatus`
+--
+
+CREATE TABLE `apparatus` (
+  `a_id` int(255) UNSIGNED NOT NULL,
+  `a_pc` int(11) NOT NULL,
+  `a_phone` int(11) NOT NULL,
+  `a_date` date NOT NULL,
+  `a_month` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `apparatus`
+--
+
+INSERT INTO `apparatus` (`a_id`, `a_pc`, `a_phone`, `a_date`, `a_month`) VALUES
+(1, 86, 83, '0000-00-00', '一月'),
+(2, 89, 88, '0000-00-00', '二月'),
+(3, 90, 98, '0000-00-00', '三月'),
+(4, 89, 93, '0000-00-00', '四月'),
+(5, 100, 106, '0000-00-00', '五月'),
+(6, 83, 84, '0000-00-00', '六月'),
+(7, 96, 105, '0000-00-00', '七月'),
+(8, 106, 104, '0000-00-00', '八月'),
+(9, 103, 91, '0000-00-00', '九月'),
+(10, 110, 83, '0000-00-00', '十月'),
+(11, 95, 106, '0000-00-00', '十一月'),
+(12, 102, 92, '0000-00-00', '十二月');
 
 -- --------------------------------------------------------
 
@@ -62,6 +94,12 @@ INSERT INTO `memberdata` (`m_id`, `m_name`, `m_username`, `m_passwd`, `m_sex`, `
 --
 
 --
+-- 資料表索引 `apparatus`
+--
+ALTER TABLE `apparatus`
+  ADD PRIMARY KEY (`a_id`);
+
+--
 -- 資料表索引 `memberdata`
 --
 ALTER TABLE `memberdata`
@@ -72,6 +110,11 @@ ALTER TABLE `memberdata`
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
 
+--
+-- 使用資料表 AUTO_INCREMENT `apparatus`
+--
+ALTER TABLE `apparatus`
+  MODIFY `a_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- 使用資料表 AUTO_INCREMENT `memberdata`
 --
