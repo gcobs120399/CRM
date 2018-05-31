@@ -16,6 +16,34 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["loginMember"]."'";
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
+
+$query_RecFlower = "SELECT * FROM `path`";
+$RecFlower = mysql_query($query_RecFlower);
+$row_RecFlower=mysql_fetch_assoc($RecFlower);
+//選取所有一般會員資料
+//預設每頁筆數
+$pageRow_records = 12;
+//預設頁數
+$num_pages = 1;
+//若已經有翻頁，將頁數更新
+if (isset($_GET['page'])) {
+  $num_pages = $_GET['page'];
+}
+//本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
+$startRow_records = ($num_pages -1) * $pageRow_records;
+//未加限制顯示筆數的SQL敘述句
+$query_RecFlower = "SELECT * FROM `path`";
+//加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
+$query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
+//以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
+$RecFlower = mysql_query($query_limit_RecFlower);
+//以未加上限制顯示筆數的SQL敘述句查詢資料到 $all_resultMember 中
+$all_RecFlower = mysql_query($query_RecFlower);
+//計算總筆數
+$total_records = mysql_num_rows($all_RecFlower);
+//計算總頁數=(總筆數/每頁筆數)後無條件進位。
+$total_pages = ceil($total_records/$pageRow_records);
+
 ?>
 <html lang="en">
 <head>
@@ -44,7 +72,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-     <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
+     <a class="navbar-brand" href="member_center.php" style="font-size: 24pt;">顧客關係管理之寵物飼料管理</a>
     </div>
   </div>
 </nav>
@@ -71,7 +99,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">使用者行為</h1>
+<h1 style="text-align:center;">瀏覽路徑紀錄</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
@@ -87,6 +115,41 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
+      <br>
+      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
+    <tr>
+    <td class="tdbline">
+    <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
+      <tr valign="top">
+        <td class="tdrline"><p class="title" style="text-align: center;">平均瀏覽路徑紀錄</p>
+          <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
+            <tr >
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>月份</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>FB</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>MOMO</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>搜尋引擎</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>部落格</p></th>
+            </tr>
+      <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
+            <tr>
+              <td width="10%" align="center" bgcolor="#FFFFFF">
+                <p><?php echo $row_RecFlower["p_month"];?></a></p>
+              </td>
+              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_fb"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_momo"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_find"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_blog"]; ?>
+                </p></td>
+            </tr>
+      <?php }?>
+          </table>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
 </div><!--div放白色透明度60%結束-->
@@ -109,60 +172,68 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-Highcharts.chart('container', {
+var chart = Highcharts.chart('container',{
     chart: {
-        type: 'area'
+        type: 'column'
     },
     title: {
-        text: '寵物品種分析'
+        text: '平均瀏覽路徑紀錄',
+        style:{
+                fontSize:'24px'
+              }
     },
     subtitle: {
-        text: 'Source: minar-database'
     },
     xAxis: {
-        categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
-        }
+        categories: [
+            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
+        ],
+        crosshair: true,
+        labels:{
+              style:{
+                fontSize:'18px'
+              }
+            }
     },
     yAxis: {
+        min: 60,
         title: {
-            text: '隻'
+            text: '平均次數',
+            style:{
+                fontSize:'18px'
+              }
         },
-        labels: {
-            formatter: function () {
-                return this.value  ;
+        labels:{
+              style:{
+                fontSize:'18px'
+              }
             }
-        }
     },
     tooltip: {
-        split: true,
-        valueSuffix: ' 隻'
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 次<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
     },
     plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
+        column: {
+            borderWidth: 0
         }
     },
     series: [{
-        name: '小型犬',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
+        name: 'FB',
+        data: [89.9, 91.5, 106.4, 129.2, 134.0, 156.0, 135.6, 148.5, 166.4, 154.1, 95.6, 105.4]
     }, {
-        name: '中型犬',
-        data: [106, 107, 111, 133, 221, 767, 1766]
+        name: 'MOMO',
+        data: [93.6, 88.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
     }, {
-        name: '大型犬',
-        data: [163, 203, 276, 408, 547, 729, 628]
+        name: '搜尋引擎',
+        data: [88.9, 88.8, 99.3, 101.4, 117.0, 98.3, 99.0, 89.6, 112.4, 95.2, 109.3, 91.2]
     }, {
-        name: '超大型犬',
-        data: [18, 31, 54, 156, 339, 818, 1201]
+        name: '部落格',
+        data: [92.4, 93.2, 84.5, 99.7, 92.6, 105.5, 87.4, 90.4, 97.6, 99.1, 106.8, 89.1]
     }]
 });
 </script>

@@ -54,7 +54,7 @@ $total_pages = ceil($total_records/$pageRow_records);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="./css/bootstrap.min.css" rel="stylesheet">
   <script src="./js/ie-emulation-modes-warning.js"></script> 
-  <link rel="icon" href="./img/title.png">
+  <link rel="icon" href="./newimg/02.png">
 <!--呆-->
   <meta  http-equiv="Content-Type" content="text/html;charset=utf-8">
   <link href="style.css" rel="stylesheet" type="text/css">
@@ -102,7 +102,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 <h1 style="text-align:center;">使用者裝置紀錄</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
+  <a href="path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
   <a href="stay.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁停留時間</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化紀錄器</a><br>
@@ -200,7 +200,7 @@ var chart = Highcharts.chart('container',{
     },
     tooltip: {
         // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table><br>',
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
         pointFormat: '{series.name}:' +
         '{point.y:.1f} 次<br>',
         footerFormat: '</table>',
