@@ -5,9 +5,9 @@ session_start();
 //檢查是否經過登入，若有登入則重新導向
 if(isset($_SESSION["loginMember"]) && ($_SESSION["loginMember"]!="")){
   /*if($_SESSION["memberLevel"]=="member"){*/
-    header("Location: user.php");
+    header("Location: path.php");
   /*}else{
-    header("Location: user.php");
+    header("Location: path.php");
   }*/
 }
 //執行會員登入
@@ -40,7 +40,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
     }
     //若帳號等級為 member 則導向會員中心
     if($_SESSION["memberLevel"]=="admin"){
-      header("Location: user.php");
+      header("Location: path.php");
     }else{
     header("Location: index.php?errMsg=1");}
   }
