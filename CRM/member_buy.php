@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `shop`";
+$query_RecFlower = "SELECT * FROM `mem_buy`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `shop`";
+$query_RecFlower = "SELECT * FROM `mem_buy`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -72,7 +72,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-     <a class="navbar-brand" href="member_center.php" style="font-size: 24pt;">顧客關係管理之寵物飼料管理</a>
+     <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
     </div>
   </div>
 </nav>
@@ -89,8 +89,8 @@ $total_pages = ceil($total_records/$pageRow_records);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="user_path.php">使用者行為</a></li>
-        <li><a href="member_path.php">客群分析</a></li>
+        <li><a href="user_path.php">使用者行為</a></li>
+        <li class="active"><a href="member_path.php">客群分析</a></li>
         <li><a href="consumption.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
@@ -98,9 +98,9 @@ $total_pages = ceil($total_records/$pageRow_records);
     </div>
   </div>
 </nav>
+
 <br><br><br>
-<h1 style="text-align:center;">購物車歷史紀錄</h1>
-<hr>
+<h1 style="text-align:center;">客群購買</h1><hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="member_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁平均瀏覽</a><br>
   <a href="member_attributes.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群屬性</a><br>
@@ -110,37 +110,70 @@ $total_pages = ceil($total_records/$pageRow_records);
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
-  
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
       <br>
-      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
+      <table width="100%" border="0px" align="center" cellpadding="4" cellspacing="0">
     <tr>
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">購物車歷史紀錄</p>
+        <td class="tdrline"><p class="title" style="text-align: center;">客群購買</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
-            <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>產品名稱</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>有購買</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>無購買</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>總瀏覽人數</p></th>
+            <tr>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" rowspan="2"><p>年齡</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" colspan="5"><p>男性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" colspan="5"><p>女性</p></th>
+            </tr>
+            <tr>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶膚</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶心</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶睛</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶身</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶骨</td>
+
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶膚</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶心</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶睛</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶身</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF">優寶骨</td>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["proudct"];?></a></p>
+              <td width="5%" align="center" bgcolor="#FFFFFF">
+                <p><?php echo $row_RecFlower["ago"];?></a></p>
               </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["s_y"]; ?>
-                </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["s_n"]; ?>
-                </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["s_all"]; ?>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["w1"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["w2"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["w3"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["w4"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["w5"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["b1"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["b2"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["b3"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["b4"]; ?>
+              </p></td>
+              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["b5"]; ?>
+              </p></td>
                 </p></td>
             </tr>
       <?php }?>
@@ -172,7 +205,7 @@ var chart = Highcharts.chart('container', {
         zoomType: 'xy'
     },
     title: {
-        text: '購物車歷史紀錄',
+        text: '客群購買',
         style:{
             fontSize:'24px'
         }
@@ -205,14 +238,14 @@ var chart = Highcharts.chart('container', {
         }
     }, { // Secondary yAxis
         title: {
-            text: '產品',
+            text: '人數',
             style: {
                 color: Highcharts.getOptions().colors[0],
                 fontSize:'18px'
             }
         },
         labels: {
-            format: '{value} 個',
+            format: '{value} 人',
             style: {
                 color: Highcharts.getOptions().colors[0],
                 fontSize:'18px'
@@ -226,32 +259,60 @@ var chart = Highcharts.chart('container', {
     legend: {
         layout: 'vertical',
         align: 'left',
-        x: 300,
+        x: 740,
         verticalAlign: 'top',
-        y: 75,
+        y: 50,
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
     },
     series: [{
-        name: '有購買',
+        name: '男性',
         type: 'column',
         yAxis: 1,
-        data: [1629,1264, 1462, 2158,1390],
+        data: [631,574, 609, 898,635],
         tooltip: {
-            valueSuffix: ' 個'
+            valueSuffix: ' 人'
         },
     },{
-        name: '無購買',
+        name: '女性',
         type: 'column',
         yAxis: 1,
-        data: [652, 506, 585, 863,556],
+        data: [965, 690, 853, 1260,755],
         tooltip: {
-            valueSuffix: ' 個'
+            valueSuffix: ' 人'
         },
     }, {
-        name: '總人數',
+        name: '20以下',
         type: 'spline',
-        data: [3462, 2164, 2834, 4202,2340],
+        data: [77, 173, 127, 183,195],
+        tooltip: {
+            valueSuffix: '人'
+        }
+    },{
+        name: '21-30',
+        type: 'spline',
+        data: [362, 264, 293, 468,290],
+        tooltip: {
+            valueSuffix: '人'
+        }
+    },{
+        name: '31-40',
+        type: 'spline',
+        data: [713, 391, 570, 849,417],
+        tooltip: {
+            valueSuffix: '人'
+        }
+    },{
+        name: '41-50',
+        type: 'spline',
+        data: [386, 272, 333, 492,190],
+        tooltip: {
+            valueSuffix: '人'
+        }
+    },{
+        name: '51以上',
+        type: 'spline',
+        data: [58, 164,115, 166,190],
         tooltip: {
             valueSuffix: '人'
         }

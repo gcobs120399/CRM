@@ -104,7 +104,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="member_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁平均瀏覽</a><br>
   <a href="member_attributes.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群屬性</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群購買</a><br>
+  <a href="member_buy.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群購買</a><br>
   <a href="member_shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客戶忠誠度</a>
 </div>
@@ -198,8 +198,8 @@ var chart = Highcharts.chart('container', {
                 return (Math.abs(this.value) / 1) + '人';
             }
         },
-        min: -5000,
-        max: 5000
+        min: -1250,
+        max: 1800
     },
     plotOptions: {
         series: {
@@ -214,10 +214,10 @@ var chart = Highcharts.chart('container', {
     },
     series: [{
         name: '男',
-        data: [-301, -701, -4660, -753,-252]
+        data: [-300, -750, -1200, -800,-300]
     }, {
         name: '女',
-        data: [352, 957, 5830, 901, 301]
+        data: [451, 951, 1770, 981, 400]
     }]
 });
 </script>

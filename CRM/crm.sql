@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-01 07:45:27
+-- 產生時間： 2018-06-01 08:57:11
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -139,6 +139,38 @@ INSERT INTO `mem_attributes` (`mem_id`, `mem`, `mem_b`, `mem_w`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `mem_buy`
+--
+
+CREATE TABLE `mem_buy` (
+  `nb_id` int(10) UNSIGNED NOT NULL,
+  `ago` text COLLATE utf8_unicode_ci NOT NULL,
+  `w1` int(11) NOT NULL COMMENT '膚',
+  `w2` int(11) NOT NULL COMMENT '心',
+  `w3` int(11) NOT NULL COMMENT '睛',
+  `w4` int(11) NOT NULL COMMENT '身',
+  `w5` int(11) NOT NULL COMMENT '骨',
+  `b1` int(11) NOT NULL COMMENT '膚',
+  `b2` int(11) NOT NULL COMMENT '心',
+  `b3` int(11) NOT NULL COMMENT '睛',
+  `b4` int(11) NOT NULL COMMENT '身',
+  `b5` int(11) NOT NULL COMMENT '骨'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `mem_buy`
+--
+
+INSERT INTO `mem_buy` (`nb_id`, `ago`, `w1`, `w2`, `w3`, `w4`, `w5`, `b1`, `b2`, `b3`, `b4`, `b5`) VALUES
+(1, '20以下', 114, 64, 79, 105, 92, 69, 16, 48, 90, 81),
+(2, '21-30', 264, 211, 179, 155, 142, 204, 151, 138, 35, 122),
+(3, '31-40', 510, 427, 342, 237, 224, 339, 286, 228, 180, 167),
+(4, '41-50', 273, 220, 185, 158, 145, 219, 166, 148, 140, 127),
+(5, '51以上', 99, 46, 68, 100, 87, 67, 12, 48, 90, 77);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `path`
 --
 
@@ -254,6 +286,12 @@ ALTER TABLE `mem_attributes`
   ADD PRIMARY KEY (`mem_id`);
 
 --
+-- 資料表索引 `mem_buy`
+--
+ALTER TABLE `mem_buy`
+  ADD PRIMARY KEY (`nb_id`);
+
+--
 -- 資料表索引 `path`
 --
 ALTER TABLE `path`
@@ -295,6 +333,11 @@ ALTER TABLE `memberdata`
 --
 ALTER TABLE `mem_attributes`
   MODIFY `mem_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- 使用資料表 AUTO_INCREMENT `mem_buy`
+--
+ALTER TABLE `mem_buy`
+  MODIFY `nb_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用資料表 AUTO_INCREMENT `path`
 --
