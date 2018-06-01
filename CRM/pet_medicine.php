@@ -61,7 +61,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <!--<li><a href="user_path.php">使用者行為</a></li>-->
+        <li><a href="user_path.php">使用者行為</a></li>
         <li><a href="member_path.php">客群分析</a></li>
         <li class="active"><a href="pet_medicine.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
@@ -74,7 +74,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <h1 style="text-align:center;">寵物營養保健品分析</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
+  <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物種類分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
@@ -107,60 +107,68 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-Highcharts.chart('container', {
+var chart = Highcharts.chart('container',{
     chart: {
-        type: 'area'
+        type: 'column'
     },
     title: {
-        text: '寵物品種分析'
+        text: '寵物營養保健品',
+        style:{
+            fontSize:'24px'
+        }
     },
     subtitle: {
-        text: 'Source: minar-database'
     },
     xAxis: {
-        categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
+        categories: [
+            "優寶睛", "優寶心", "優寶身", "優寶骨", "優寶膚"
+        ],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
         }
     },
     yAxis: {
+        min: 0,
         title: {
-            text: '隻'
-        },
-        labels: {
-            formatter: function () {
-                return this.value  ;
+            text: '隻數',
+            style:{
+                fontSize:'18px'
+            },
+            labels:{
+                style:{
+                    fontSize:'18px'
+                }
             }
         }
     },
     tooltip: {
-        split: true,
-        valueSuffix: ' 隻'
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}: ' +'{point.y:.1f} 隻<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
     },
     plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
-        }
+        column: {
+            borderWidth: 0
+        },
     },
     series: [{
         name: '小型犬',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
+        data: [431, 456, 123, 244, 546]
     }, {
         name: '中型犬',
-        data: [106, 107, 111, 133, 221, 767, 1766]
+        data: [424, 434, 345, 241, 612]
     }, {
         name: '大型犬',
-        data: [163, 203, 276, 408, 547, 729, 628]
+        data: [512, 616, 718, 412, 578]
     }, {
         name: '超大型犬',
-        data: [18, 31, 54, 156, 339, 818, 1201]
+        data: [95, 123, 204, 367, 422]
     }]
 });
 </script>
