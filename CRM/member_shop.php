@@ -89,8 +89,8 @@ $total_pages = ceil($total_records/$pageRow_records);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="user_path.php">使用者行為</a></li>
-        <li><a href="member_path.php">客群分析</a></li>
+        <!--<li><a href="user_path.php">使用者行為</a></li>-->
+        <li class="active"><a href="member_path.php">客群分析</a></li>
         <li><a href="pet_medicine.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
