@@ -118,7 +118,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
     </td>
   </tr>
   <tr>
-    <td align="center" background="images/album_r2_c1.jpg" class="trademark" style="font-size: 18px;">© 2018 顧客關係管理之寵物飼料管理 ©</td>
+    <td align="center" class="trademark" style="font-size: 18px;">© 2018 顧客關係管理之寵物飼料管理 ©</td>
   </tr>
 </table>
 </div><!--div放白色背景透明度60%結束-->

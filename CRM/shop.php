@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `path`";
+$query_RecFlower = "SELECT * FROM `shop`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `path`";
+$query_RecFlower = "SELECT * FROM `shop`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -124,28 +124,24 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;">購物車歷史紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>FB</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>MOMO</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>搜尋引擎</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>部落格</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>產品名稱</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>有購買</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>無購買</p></th>
+              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>總瀏覽人數</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["p_month"];?></a></p>
+                <p><?php echo $row_RecFlower["proudct"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_fb"]; ?>
+                <?php echo $row_RecFlower["s_y"]; ?>
                 </p></td>
                 <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_momo"]; ?>
+                <?php echo $row_RecFlower["s_n"]; ?>
                 </p></td>
                 <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_find"]; ?>
-                </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_blog"]; ?>
+                <?php echo $row_RecFlower["s_all"]; ?>
                 </p></td>
             </tr>
       <?php }?>
@@ -177,25 +173,35 @@ var chart = Highcharts.chart('container', {
         zoomType: 'xy'
     },
     title: {
-        text: '購物車歷史紀錄'
+        text: '購物車歷史紀錄',
+        style:{
+            fontSize:'24px'
+        }
     },
     subtitle: {
     },
     xAxis: [{
-        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚'],
-        crosshair: true
+        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚','優寶身'],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
     }],
     yAxis: [{ // Primary yAxis
         labels: {
             format: '{value}',
             style: {
-                color: Highcharts.getOptions().colors[1]
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
             }
         },
         title: {
             text: '人數',
             style: {
-                color: Highcharts.getOptions().colors[1]
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
             }
         }
     }, { // Secondary yAxis
@@ -208,7 +214,8 @@ var chart = Highcharts.chart('container', {
         labels: {
             format: '{value} 個',
             style: {
-                color: Highcharts.getOptions().colors[0]
+                color: Highcharts.getOptions().colors[0],
+                fontSize:'18px'
             }
         },
         opposite: true
@@ -219,9 +226,9 @@ var chart = Highcharts.chart('container', {
     legend: {
         layout: 'vertical',
         align: 'left',
-        x: 120,
+        x: 300,
         verticalAlign: 'top',
-        y: 100,
+        y: 75,
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
     },
@@ -229,7 +236,7 @@ var chart = Highcharts.chart('container', {
         name: '有購買',
         type: 'column',
         yAxis: 1,
-        data: [49.9, 71.5, 106.4, 129.2],
+        data: [1629,1264, 1462, 2158,1390],
         tooltip: {
             valueSuffix: ' 個'
         },
@@ -237,14 +244,14 @@ var chart = Highcharts.chart('container', {
         name: '無購買',
         type: 'column',
         yAxis: 1,
-        data: [49.9, 71.5, 106.4, 129.2],
+        data: [652, 506, 585, 863,556],
         tooltip: {
             valueSuffix: ' 個'
         },
     }, {
         name: '總人數',
         type: 'spline',
-        data: [7.0, 6.9, 9.5, 14.5],
+        data: [3462, 2164, 2834, 4202,2340],
         tooltip: {
             valueSuffix: '人'
         }
