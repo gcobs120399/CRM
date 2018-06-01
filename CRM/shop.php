@@ -124,10 +124,10 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;">購物車歷史紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>產品名稱</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>有購買</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>無購買</p></th>
-              <th width="10%" bgcolor="#CCCCCC" style="text-align:center;"><p>總瀏覽人數</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>產品名稱</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>有購買</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>無購買</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>總瀏覽人數</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
