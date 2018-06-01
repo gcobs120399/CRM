@@ -208,7 +208,8 @@ var chart = Highcharts.chart('container', {
         title: {
             text: '產品',
             style: {
-                color: Highcharts.getOptions().colors[0]
+                color: Highcharts.getOptions().colors[0],
+                fontSize:'18px'
             }
         },
         labels: {
