@@ -63,7 +63,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
       <ul class="nav navbar-nav" style="font-size: 20px;">
         <li><a href="user_path.php">使用者行為</a></li>
         <li><a href="member_path.php">客群分析</a></li>
-        <li class="active"><a href="consumption.php">寵物分析</a></li>
+        <li class="active"><a href="pet_medicine.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
@@ -71,7 +71,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">寵物分析</h1>
+<h1 style="text-align:center;">寵物營養保健品分析</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>

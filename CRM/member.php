@@ -63,7 +63,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
       <ul class="nav navbar-nav" style="font-size: 20px;">
         <li><a href="user_path.php">使用者行為</a></li>
         <li class="active"><a href="member_path.php">客群分析</a></li>
-        <li><a href="consumption.php">寵物分析</a></li>
+        <li><a href="pet_medicine.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
