@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `path`";
+$query_RecFlower = "SELECT * FROM `mem_attributes`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `path`";
+$query_RecFlower = "SELECT * FROM `mem_attributes`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -100,7 +100,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 </nav>
 
 <br><br><br>
-<h1 style="text-align:center;">網頁平均瀏覽</h1><hr>
+<h1 style="text-align:center;">客群屬性</h1><hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="member_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁平均瀏覽</a><br>
   <a href="member_attributes.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群屬性</a><br>
@@ -110,7 +110,6 @@ $total_pages = ceil($total_records/$pageRow_records);
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
-  
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
@@ -120,31 +119,24 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">平均瀏覽路徑紀錄</p>
+        <td class="tdrline"><p class="title" style="text-align: center;">客群屬性</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>FB</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>MOMO</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>搜尋引擎</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>部落格</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>年齡</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>男性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>女性</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["p_month"];?></a></p>
+                <p><?php echo $row_RecFlower["mem"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_fb"]; ?>
+                <?php echo $row_RecFlower["mem_b"]; ?>
                 </p></td>
                 <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_momo"]; ?>
+                <?php echo $row_RecFlower["mem_w"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_find"]; ?>
-                </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["p_blog"]; ?>
                 </p></td>
             </tr>
       <?php }?>
@@ -171,68 +163,61 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container',{
+var categories = ['20以下', '21-30', '31-40', '41-50','51以上'];
+var chart = Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'bar'
     },
     title: {
-        text: '網頁平均瀏覽',
-        style:{
-                fontSize:'24px'
-              }
+        text: '客群屬性'
     },
     subtitle: {
+        useHTML: true,
     },
-    xAxis: {
-        categories: [
-            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
-        ],
-        crosshair: true,
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
-    },
+    xAxis: [{
+        categories: categories,
+        reversed: false,
+        labels: {
+            step: 1
+        }
+    }, { 
+        opposite: true, 
+        reversed: false,
+        categories: categories,
+        linkedTo: 0,
+        labels: {
+            step: 1
+        }
+    }],
     yAxis: {
-        min: 60,
         title: {
-            text: '平均次數',
-            style:{
-                fontSize:'18px'
-              }
+            text: null
         },
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
+        labels: {
+            formatter: function () {
+                return (Math.abs(this.value) / 1) + '人';
             }
-    },
-    tooltip: {
-        // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
-        pointFormat: '{series.name}:' +'{point.y:.1f} 次<br>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
+        },
+        min: -5000,
+        max: 5000
     },
     plotOptions: {
-        column: {
-            borderWidth: 0
+        series: {
+            stacking: 'normal'
+        }
+    },
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.series.name + ', 年齡: ' + this.point.category + '</b><br/>' +
+                '人數: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
         }
     },
     series: [{
-        name: 'FB',
-        data: [89.9, 91.5, 106.4, 129.2, 134.0, 156.0, 135.6, 148.5, 166.4, 154.1, 95.6, 105.4]
+        name: '男',
+        data: [-301, -701, -4660, -753,-252]
     }, {
-        name: 'MOMO',
-        data: [93.6, 88.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-    }, {
-        name: '搜尋引擎',
-        data: [88.9, 88.8, 99.3, 101.4, 117.0, 98.3, 99.0, 89.6, 112.4, 95.2, 109.3, 91.2]
-    }, {
-        name: '部落格',
-        data: [92.4, 93.2, 84.5, 99.7, 92.6, 105.5, 87.4, 90.4, 97.6, 99.1, 106.8, 89.1]
+        name: '女',
+        data: [352, 957, 5830, 901, 301]
     }]
 });
 </script>

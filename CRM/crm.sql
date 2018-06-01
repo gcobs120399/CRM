@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-01 05:13:33
+-- 產生時間： 2018-06-01 07:45:27
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -104,13 +104,37 @@ CREATE TABLE `memberdata` (
 
 INSERT INTO `memberdata` (`m_id`, `m_name`, `m_username`, `m_passwd`, `m_sex`, `m_birthday`, `m_level`, `m_email`, `m_url`, `m_phone`, `m_address`, `m_login`, `m_logintime`, `m_jointime`) VALUES
 (1, '系統管理員', 'admin', '21232f297a57a5a743894a0e4a801fc3', '男', NULL, 'admin', NULL, NULL, NULL, NULL, 7, '2008-10-21 12:07:13', '2008-10-20 16:36:15'),
-(12, '9527', 'gcobs120399', '4f58111f49e05226933bf1122df4a9ae', '女', '1996-01-20', 'admin', 'gcobs120399@gmail.com', '', '', '', 112, '2018-06-01 09:40:29', '2016-07-04 13:18:25'),
+(12, '9527', 'gcobs120399', '4f58111f49e05226933bf1122df4a9ae', '女', '1996-01-20', 'admin', 'gcobs120399@gmail.com', '', '', '', 114, '2018-06-01 12:51:27', '2016-07-04 13:18:25'),
 (13, '113', 'root12', 'f5948d35adf81357375ec2fe1313259f', '女', '1235-12-23', 'admin', 'gcobs120399@gmail.com', '', '', '', 18, '2016-10-22 09:04:15', '2016-07-04 13:29:24'),
 (14, '豐田蘭園', 'b10356019', 'aef24e1def02692cefab5a014a8770d5', '女', '2017-01-03', 'admin', '123@yahoo.com.tw', '', '', '', 115, '2017-12-13 07:50:08', '2016-11-14 18:17:10'),
 (15, '萬俟和玉', 'adg257p', '377c92bbe8b81606ed934808d2afa2cc', '女', '1996-07-11', 'admin', 'adg257p@yahoo.com.tw', '', '', '', 1, '2016-11-15 16:41:11', '2016-11-15 16:41:03'),
 (16, 'HTML5', 'abcde', '827ccb0eea8a706c4c34a16891f84e7b', '女', '0000-00-00', 'member', 'emppy_miao511311@yahoo.com.tw', '', '', '', 35, '2017-04-11 16:24:59', '2016-11-15 16:46:20'),
 (17, 'rybfvevk', 'uqubbetw', '32cc5886dc1fa8c106a02056292c4654', '女', '0000-00-00', 'member', 'sample@email.tst', '1', '555-666-0606', '3137 Laguna Street', 0, NULL, '2017-06-02 13:55:27'),
 (18, 'ruskxfcj', 'jxuitvgr', '32cc5886dc1fa8c106a02056292c4654', '男', '0000-00-00', 'member', 'sample@email.tst', '1', '555-666-0606', '3137 Laguna Street', 0, NULL, '2017-06-02 13:55:27');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `mem_attributes`
+--
+
+CREATE TABLE `mem_attributes` (
+  `mem_id` int(10) UNSIGNED NOT NULL,
+  `mem` text COLLATE utf8_unicode_ci NOT NULL,
+  `mem_b` int(11) NOT NULL,
+  `mem_w` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `mem_attributes`
+--
+
+INSERT INTO `mem_attributes` (`mem_id`, `mem`, `mem_b`, `mem_w`) VALUES
+(1, '20歲以下', 301, 352),
+(2, '21-30', 701, 957),
+(3, '31-40', 4660, 5830),
+(4, '41-50', 753, 901),
+(5, '51以上', 252, 301);
 
 -- --------------------------------------------------------
 
@@ -224,6 +248,12 @@ ALTER TABLE `memberdata`
   ADD UNIQUE KEY `m_username` (`m_username`);
 
 --
+-- 資料表索引 `mem_attributes`
+--
+ALTER TABLE `mem_attributes`
+  ADD PRIMARY KEY (`mem_id`);
+
+--
 -- 資料表索引 `path`
 --
 ALTER TABLE `path`
@@ -260,6 +290,11 @@ ALTER TABLE `area`
 --
 ALTER TABLE `memberdata`
   MODIFY `m_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- 使用資料表 AUTO_INCREMENT `mem_attributes`
+--
+ALTER TABLE `mem_attributes`
+  MODIFY `mem_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用資料表 AUTO_INCREMENT `path`
 --
