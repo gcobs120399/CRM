@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-01 04:17:55
+-- 產生時間： 2018-06-01 05:13:33
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -51,6 +51,29 @@ INSERT INTO `apparatus` (`a_id`, `a_pc`, `a_phone`, `a_date`, `a_month`) VALUES
 (10, 110, 83, '0000-00-00', '十月'),
 (11, 95, 106, '0000-00-00', '十一月'),
 (12, 102, 92, '0000-00-00', '十二月');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `area`
+--
+
+CREATE TABLE `area` (
+  `a_id` int(10) UNSIGNED NOT NULL,
+  `area` text COLLATE utf8_unicode_ci NOT NULL,
+  `a_people` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `area`
+--
+
+INSERT INTO `area` (`a_id`, `area`, `a_people`) VALUES
+(1, '北部', 2270),
+(2, '中部', 2029),
+(3, '南部', 9732),
+(4, '東部', 2076),
+(5, '外島', 77);
 
 -- --------------------------------------------------------
 
@@ -188,6 +211,12 @@ ALTER TABLE `apparatus`
   ADD PRIMARY KEY (`a_id`);
 
 --
+-- 資料表索引 `area`
+--
+ALTER TABLE `area`
+  ADD PRIMARY KEY (`a_id`);
+
+--
 -- 資料表索引 `memberdata`
 --
 ALTER TABLE `memberdata`
@@ -221,6 +250,11 @@ ALTER TABLE `stay`
 --
 ALTER TABLE `apparatus`
   MODIFY `a_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- 使用資料表 AUTO_INCREMENT `area`
+--
+ALTER TABLE `area`
+  MODIFY `a_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用資料表 AUTO_INCREMENT `memberdata`
 --

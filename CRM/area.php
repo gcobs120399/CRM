@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `stay`";
+$query_RecFlower = "SELECT * FROM `area`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `stay`";
+$query_RecFlower = "SELECT * FROM `area`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -99,7 +99,7 @@ $total_pages = ceil($total_records/$pageRow_records);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">網頁停留時間</h1>
+<h1 style="text-align:center;">使用者地區紀錄</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
@@ -111,7 +111,6 @@ $total_pages = ceil($total_records/$pageRow_records);
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
-  
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
@@ -121,19 +120,19 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">平均網頁停留時間</p>
+        <td class="tdrline"><p class="title" style="text-align: center;">使用者地區紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>平均停留時間(秒)</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>地區</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>人數</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["s_month"];?></a></p>
+                <p><?php echo $row_RecFlower["area"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["s_count"]; ?>
+                <?php echo $row_RecFlower["a_people"]; ?>
                 </p></td>
             </tr>
       <?php }?>
@@ -160,52 +159,59 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container', {
+var chart = Highcharts.chart('container',{
     chart: {
-        type: 'line'
+        type: 'column'
     },
     title: {
-        text: '2017平均顧客網頁停留時間',
+        text: '使用者地區紀錄',
         style:{
-                fontSize:'24px'
-              }
+            fontSize:'24px'
+        }
     },
     subtitle: {
     },
     xAxis: {
-        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        categories: [
+            '北部','中部','南部','東部','外島'
+        ],
+        crosshair: true,
         labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
-    },
-    yAxis: {
-        title: {
-            text: '平均時間(秒)',
             style:{
                 fontSize:'18px'
-              }
+            }
+        }
+    },
+    yAxis: {
+        min: 60,
+        title: {
+            text: '人數',
+            style:{
+                fontSize:'18px'
+            }
         },
         labels:{
-              style:{
+            style:{
                 fontSize:'18px'
-              }
             }
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 人<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
     },
     plotOptions: {
-        line: {
-            dataLabels: {
-                // 開啟數據標籤
-                enabled: true
-            },
-            // 關閉滑鼠追蹤，提示框、點擊事件
-            enableMouseTracking: false
+        column: {
+            borderWidth: 0
         }
     },
     series: [{
-        name: '時間軸',
-        data: [25.0, 29.9, 29.5, 30.5, 28.4, 24.5, 25.2, 26.5, 23.3, 24.3, 26.9, 29.6]
+        name: '人數',
+        data: [2270,2029,9732,2076,77]
     }]
 });
 </script>
