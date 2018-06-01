@@ -120,7 +120,7 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">使用者地區紀錄</p>
+        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">使用者地區紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>地區</p></th>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-01 10:10:55
+-- 產生時間： 2018-06-01 14:10:16
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -104,7 +104,7 @@ CREATE TABLE `memberdata` (
 
 INSERT INTO `memberdata` (`m_id`, `m_name`, `m_username`, `m_passwd`, `m_sex`, `m_birthday`, `m_level`, `m_email`, `m_url`, `m_phone`, `m_address`, `m_login`, `m_logintime`, `m_jointime`) VALUES
 (1, '系統管理員', 'admin', '21232f297a57a5a743894a0e4a801fc3', '男', NULL, 'admin', NULL, NULL, NULL, NULL, 7, '2008-10-21 12:07:13', '2008-10-20 16:36:15'),
-(12, '9527', 'gcobs120399', '4f58111f49e05226933bf1122df4a9ae', '女', '1996-01-20', 'admin', 'gcobs120399@gmail.com', '', '', '', 114, '2018-06-01 12:51:27', '2016-07-04 13:18:25'),
+(12, '9527', 'gcobs120399', '4f58111f49e05226933bf1122df4a9ae', '女', '1996-01-20', 'admin', 'gcobs120399@gmail.com', '', '', '', 115, '2018-06-01 19:23:15', '2016-07-04 13:18:25'),
 (13, '113', 'root12', 'f5948d35adf81357375ec2fe1313259f', '女', '1235-12-23', 'admin', 'gcobs120399@gmail.com', '', '', '', 18, '2016-10-22 09:04:15', '2016-07-04 13:29:24'),
 (14, '豐田蘭園', 'b10356019', 'aef24e1def02692cefab5a014a8770d5', '女', '2017-01-03', 'admin', '123@yahoo.com.tw', '', '', '', 115, '2017-12-13 07:50:08', '2016-11-14 18:17:10'),
 (15, '萬俟和玉', 'adg257p', '377c92bbe8b81606ed934808d2afa2cc', '女', '1996-07-11', 'admin', 'adg257p@yahoo.com.tw', '', '', '', 1, '2016-11-15 16:41:11', '2016-11-15 16:41:03'),
@@ -200,6 +200,36 @@ INSERT INTO `path` (`p_id`, `p_month`, `p_fb`, `p_momo`, `p_find`, `p_blog`) VAL
 (10, '十月', 154.1, 83.5, 95.2, 99.1),
 (11, '十一月', 95.6, 106.6, 109.3, 106.8),
 (12, '十二月', 105.4, 92.3, 91.2, 89.1);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `pet_body`
+--
+
+CREATE TABLE `pet_body` (
+  `p_id` int(10) UNSIGNED NOT NULL,
+  `ago` text COLLATE utf8_unicode_ci NOT NULL,
+  `w1` int(11) NOT NULL COMMENT '小',
+  `w2` int(11) NOT NULL COMMENT '中',
+  `w3` int(11) NOT NULL COMMENT '大',
+  `w4` int(11) NOT NULL COMMENT '鈔大',
+  `b1` int(11) NOT NULL COMMENT '小',
+  `b2` int(11) NOT NULL COMMENT '中',
+  `b3` int(11) NOT NULL COMMENT '大',
+  `b4` int(11) NOT NULL COMMENT '超大'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `pet_body`
+--
+
+INSERT INTO `pet_body` (`p_id`, `ago`, `w1`, `w2`, `w3`, `w4`, `b1`, `b2`, `b3`, `b4`) VALUES
+(1, '20以下', 120, 122, 190, 55, 95, 90, 185, 12),
+(2, '21-30', 210, 250, 336, 150, 170, 210, 260, 120),
+(3, '31-40', 325, 410, 500, 260, 255, 329, 355, 256),
+(4, '41-50', 220, 260, 350, 158, 180, 200, 270, 135),
+(5, '51以上', 125, 100, 200, 50, 100, 85, 190, 15);
 
 -- --------------------------------------------------------
 
@@ -324,6 +354,12 @@ ALTER TABLE `path`
   ADD PRIMARY KEY (`p_id`);
 
 --
+-- 資料表索引 `pet_body`
+--
+ALTER TABLE `pet_body`
+  ADD PRIMARY KEY (`p_id`);
+
+--
 -- 資料表索引 `pet_medicine`
 --
 ALTER TABLE `pet_medicine`
@@ -375,6 +411,11 @@ ALTER TABLE `mem_buy`
 --
 ALTER TABLE `path`
   MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- 使用資料表 AUTO_INCREMENT `pet_body`
+--
+ALTER TABLE `pet_body`
+  MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用資料表 AUTO_INCREMENT `pet_medicine`
 --

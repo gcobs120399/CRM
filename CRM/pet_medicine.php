@@ -102,7 +102,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物種類分析</a><br>
+  <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
@@ -119,7 +119,7 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">寵物營養保健品分析</p>
+        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">寵物營養保健品分析</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>犬種</p></th>
