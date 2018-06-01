@@ -61,7 +61,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="user.php">使用者行為</a></li>
+        <li class="active"><a href="path.php">使用者行為</a></li>
         <li><a href="member.php">客群分析</a></li>
         <li><a href="consumption.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
@@ -106,64 +106,6 @@ burger.addEventListener('click', function (e) {
     e.preventDefault();
     document.body.classList.toggle('open');
     burger.classList.toggle('open');
-});
-</script>
-<script>
-Highcharts.chart('container', {
-    chart: {
-        type: 'area'
-    },
-    title: {
-        text: '寵物品種分析'
-    },
-    subtitle: {
-        text: 'Source: minar-database'
-    },
-    xAxis: {
-        categories: ['201804', '201805', '201806', '201807', '201808', '201809', '201810'],
-        tickmarkPlacement: 'on',
-        title: {
-            enabled: false
-        }
-    },
-    yAxis: {
-        title: {
-            text: '隻'
-        },
-        labels: {
-            formatter: function () {
-                return this.value  ;
-            }
-        }
-    },
-    tooltip: {
-        split: true,
-        valueSuffix: ' 隻'
-    },
-    plotOptions: {
-        area: {
-            stacking: 'normal',
-            lineColor: '#666666',
-            lineWidth: 1,
-            marker: {
-                lineWidth: 1,
-                lineColor: '#666666'
-            }
-        }
-    },
-    series: [{
-        name: '小型犬',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
-    }, {
-        name: '中型犬',
-        data: [106, 107, 111, 133, 221, 767, 1766]
-    }, {
-        name: '大型犬',
-        data: [163, 203, 276, 408, 547, 729, 628]
-    }, {
-        name: '超大型犬',
-        data: [18, 31, 54, 156, 339, 818, 1201]
-    }]
 });
 </script>
 </html>
