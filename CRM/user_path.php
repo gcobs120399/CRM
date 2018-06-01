@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `stay`";
+$query_RecFlower = "SELECT * FROM `path`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `stay`";
+$query_RecFlower = "SELECT * FROM `path`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -89,8 +89,8 @@ $total_pages = ceil($total_records/$pageRow_records);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="path.php">使用者行為</a></li>
-        <li><a href="member.php">客群分析</a></li>
+        <li class="active"><a href="user_path.php">使用者行為</a></li>
+        <li><a href="member_path.php">客群分析</a></li>
         <li><a href="consumption.php">寵物分析</a></li>
         <li><a href="personal.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
@@ -99,12 +99,12 @@ $total_pages = ceil($total_records/$pageRow_records);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">網頁停留時間</h1>
+<h1 style="text-align:center;">瀏覽路徑紀錄</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
-  <a href="path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
-  <a href="stay.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁停留時間</a><br>
-  <a href="shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
+  <a href="user_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
+  <a href="user_stay.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁停留時間</a><br>
+  <a href="user_shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化紀錄器</a><br>
   <a href="apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者裝置紀錄</a><br>
   <a href="area.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區紀錄</a>
@@ -121,19 +121,31 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;">平均網頁停留時間</p>
+        <td class="tdrline"><p class="title" style="text-align: center;">平均瀏覽路徑紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>平均停留時間(秒)</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>FB</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>MOMO</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>搜尋引擎</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>部落格</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["s_month"];?></a></p>
+                <p><?php echo $row_RecFlower["p_month"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["s_count"]; ?>
+                <?php echo $row_RecFlower["p_fb"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_momo"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_find"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["p_blog"]; ?>
                 </p></td>
             </tr>
       <?php }?>
@@ -160,12 +172,12 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container', {
+var chart = Highcharts.chart('container',{
     chart: {
-        type: 'line'
+        type: 'column'
     },
     title: {
-        text: '2017平均顧客網頁停留時間',
+        text: '平均瀏覽路徑紀錄',
         style:{
                 fontSize:'24px'
               }
@@ -173,7 +185,10 @@ var chart = Highcharts.chart('container', {
     subtitle: {
     },
     xAxis: {
-        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        categories: [
+            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
+        ],
+        crosshair: true,
         labels:{
               style:{
                 fontSize:'18px'
@@ -181,8 +196,9 @@ var chart = Highcharts.chart('container', {
             }
     },
     yAxis: {
+        min: 60,
         title: {
-            text: '平均時間(秒)',
+            text: '平均次數',
             style:{
                 fontSize:'18px'
               }
@@ -193,19 +209,31 @@ var chart = Highcharts.chart('container', {
               }
             }
     },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 次<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
     plotOptions: {
-        line: {
-            dataLabels: {
-                // 開啟數據標籤
-                enabled: true
-            },
-            // 關閉滑鼠追蹤，提示框、點擊事件
-            enableMouseTracking: false
+        column: {
+            borderWidth: 0
         }
     },
     series: [{
-        name: '時間軸',
-        data: [25.0, 29.9, 29.5, 30.5, 28.4, 24.5, 25.2, 26.5, 23.3, 24.3, 26.9, 29.6]
+        name: 'FB',
+        data: [89.9, 91.5, 106.4, 129.2, 134.0, 156.0, 135.6, 148.5, 166.4, 154.1, 95.6, 105.4]
+    }, {
+        name: 'MOMO',
+        data: [93.6, 88.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+    }, {
+        name: '搜尋引擎',
+        data: [88.9, 88.8, 99.3, 101.4, 117.0, 98.3, 99.0, 89.6, 112.4, 95.2, 109.3, 91.2]
+    }, {
+        name: '部落格',
+        data: [92.4, 93.2, 84.5, 99.7, 92.6, 105.5, 87.4, 90.4, 97.6, 99.1, 106.8, 89.1]
     }]
 });
 </script>

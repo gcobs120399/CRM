@@ -16,6 +16,34 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["loginMember"]."'";
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
+
+$query_RecFlower = "SELECT * FROM `apparatus`";
+$RecFlower = mysql_query($query_RecFlower);
+$row_RecFlower=mysql_fetch_assoc($RecFlower);
+//選取所有一般會員資料
+//預設每頁筆數
+$pageRow_records = 12;
+//預設頁數
+$num_pages = 1;
+//若已經有翻頁，將頁數更新
+if (isset($_GET['page'])) {
+  $num_pages = $_GET['page'];
+}
+//本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
+$startRow_records = ($num_pages -1) * $pageRow_records;
+//未加限制顯示筆數的SQL敘述句
+$query_RecFlower = "SELECT * FROM `apparatus`";
+//加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
+$query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
+//以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
+$RecFlower = mysql_query($query_limit_RecFlower);
+//以未加上限制顯示筆數的SQL敘述句查詢資料到 $all_resultMember 中
+$all_RecFlower = mysql_query($query_RecFlower);
+//計算總筆數
+$total_records = mysql_num_rows($all_RecFlower);
+//計算總頁數=(總筆數/每頁筆數)後無條件進位。
+$total_pages = ceil($total_records/$pageRow_records);
+
 ?>
 <html lang="en">
 <head>
@@ -44,7 +72,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-     <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
+     <a class="navbar-brand" href="member_center.php" style="font-size: 24pt;">顧客關係管理之寵物飼料管理</a>
     </div>
   </div>
 </nav>
@@ -71,20 +99,20 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">使用者行為</h1>
+<h1 style="text-align:center;">使用者裝置紀錄</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="user_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
   <a href="user_stay.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁停留時間</a><br>
   <a href="user_shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化紀錄器</a><br>
-<<<<<<< HEAD
+<<<<<<< HEAD:CRM/user_apparatus.php
   <a href="user_apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者裝置紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區IP紀錄</a>
 =======
   <a href="apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者裝置紀錄</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區紀錄</a>
->>>>>>> ff850c757417153d0298f95c88331ea3fe0a86d8
+  <a href="area.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區紀錄</a>
+>>>>>>> ff850c757417153d0298f95c88331ea3fe0a86d8:CRM/apparatus.php
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
@@ -92,6 +120,31 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
+      <br>
+      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
+    <tr>
+    <td class="tdbline">
+    <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
+      <tr valign="top">
+        <td class="tdrline"><p class="title" style="text-align: center;">平均使用者裝置紀錄</p>
+          <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
+            <tr >
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>月份</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>手機(次)</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>電腦(次)</p></th>
+            </tr>
+      <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
+            <tr>
+              <td width="10%" align="center" bgcolor="#FFFFFF">
+                <p><?php echo $row_RecFlower["a_month"];?></a></p>
+              </td>
+              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["a_pc"]; ?>
+                </p></td>
+              <td width="10%" align="center" bgcolor="#FFFFFF"><p><?php echo $row_RecFlower["a_phone"];?></p></td>
+            </tr>
+      <?php }?>
+          </table>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
 </div><!--div放白色透明度60%結束-->
@@ -111,6 +164,66 @@ burger.addEventListener('click', function (e) {
     e.preventDefault();
     document.body.classList.toggle('open');
     burger.classList.toggle('open');
+});
+</script>
+<script>
+var chart = Highcharts.chart('container',{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '2017使用者裝置紀錄',
+        style:{
+                fontSize:'24px'
+              }
+    },
+    subtitle: {
+    },
+    xAxis: {
+        categories: [
+            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
+        ],
+        crosshair: true,
+        labels:{
+              style:{
+                fontSize:'18px'
+              }
+            }
+    },
+    yAxis: {
+        min: 60,
+        title: {
+            text: '平均使用量(次數)',
+            style:{
+                fontSize:'18px'
+              }
+        },labels:{
+              style:{
+                fontSize:'18px'
+              }
+            }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +
+        '{point.y:.1f} 次<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: '電腦',
+        data: [86, 89, 90, 89, 100, 83, 96, 106, 103, 110, 95, 101]
+    }, {
+        name: '手機',
+        data: [83, 88, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
+    }]
 });
 </script>
 </html>
