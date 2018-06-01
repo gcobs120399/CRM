@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-01 08:57:11
+-- 產生時間： 2018-06-01 10:03:05
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -204,6 +204,32 @@ INSERT INTO `path` (`p_id`, `p_month`, `p_fb`, `p_momo`, `p_find`, `p_blog`) VAL
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `pet_medicine`
+--
+
+CREATE TABLE `pet_medicine` (
+  `p_id` int(10) UNSIGNED NOT NULL,
+  `pet` text COLLATE utf8_unicode_ci NOT NULL,
+  `eye` int(11) NOT NULL,
+  `heart` int(11) NOT NULL,
+  `body` int(11) NOT NULL,
+  `bone` int(11) NOT NULL,
+  `skin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `pet_medicine`
+--
+
+INSERT INTO `pet_medicine` (`p_id`, `pet`, `eye`, `heart`, `body`, `bone`, `skin`) VALUES
+(1, '小型犬', 431, 456, 123, 244, 546),
+(2, '中型犬', 424, 434, 345, 241, 612),
+(3, '大型犬', 512, 616, 718, 412, 578),
+(4, '超大型犬', 95, 123, 204, 367, 422);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `shop`
 --
 
@@ -298,6 +324,12 @@ ALTER TABLE `path`
   ADD PRIMARY KEY (`p_id`);
 
 --
+-- 資料表索引 `pet_medicine`
+--
+ALTER TABLE `pet_medicine`
+  ADD PRIMARY KEY (`p_id`);
+
+--
 -- 資料表索引 `shop`
 --
 ALTER TABLE `shop`
@@ -343,6 +375,11 @@ ALTER TABLE `mem_buy`
 --
 ALTER TABLE `path`
   MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- 使用資料表 AUTO_INCREMENT `pet_medicine`
+--
+ALTER TABLE `pet_medicine`
+  MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- 使用資料表 AUTO_INCREMENT `shop`
 --

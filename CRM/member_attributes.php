@@ -169,7 +169,10 @@ var chart = Highcharts.chart('container', {
         type: 'bar'
     },
     title: {
-        text: '客群屬性'
+        text: '客群屬性',
+        style:{
+            fontSize:'24px'
+        }
     },
     subtitle: {
         useHTML: true,
@@ -178,15 +181,21 @@ var chart = Highcharts.chart('container', {
         categories: categories,
         reversed: false,
         labels: {
-            step: 1
+            step: 1,
+            style:{
+                fontSize:'18px'
+            }
         }
-    }, { 
-        opposite: true, 
+    }, {
+        opposite: true,
         reversed: false,
         categories: categories,
         linkedTo: 0,
         labels: {
-            step: 1
+            step: 1,
+            style:{
+                fontSize:'18px'
+            }
         }
     }],
     yAxis: {
@@ -199,7 +208,12 @@ var chart = Highcharts.chart('container', {
             }
         },
         min: -1250,
-        max: 1800
+        max: 1800,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
     },
     plotOptions: {
         series: {

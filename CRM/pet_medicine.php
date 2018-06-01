@@ -16,6 +16,33 @@ if(isset($_GET["logout"]) && ($_GET["logout"]=="true")){
 $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["loginMember"]."'";
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
+
+$query_RecFlower = "SELECT * FROM `pet_medicine`";
+$RecFlower = mysql_query($query_RecFlower);
+$row_RecFlower=mysql_fetch_assoc($RecFlower);
+//選取所有一般會員資料
+//預設每頁筆數
+$pageRow_records = 12;
+//預設頁數
+$num_pages = 1;
+//若已經有翻頁，將頁數更新
+if (isset($_GET['page'])) {
+  $num_pages = $_GET['page'];
+}
+//本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
+$startRow_records = ($num_pages -1) * $pageRow_records;
+//未加限制顯示筆數的SQL敘述句
+$query_RecFlower = "SELECT * FROM `pet_medicine`";
+//加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
+$query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
+//以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
+$RecFlower = mysql_query($query_limit_RecFlower);
+//以未加上限制顯示筆數的SQL敘述句查詢資料到 $all_resultMember 中
+$all_RecFlower = mysql_query($query_RecFlower);
+//計算總筆數
+$total_records = mysql_num_rows($all_RecFlower);
+//計算總頁數=(總筆數/每頁筆數)後無條件進位。
+$total_pages = ceil($total_records/$pageRow_records);
 ?>
 <html lang="en">
 <head>
@@ -86,6 +113,45 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
     <div style="display: table-cell;vertical-align: middle;"></div>
+     <br>
+      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
+    <tr>
+    <td class="tdbline">
+    <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
+      <tr valign="top">
+        <td class="tdrline"><p class="title" style="text-align: center;">寵物營養保健品分析</p>
+          <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
+            <tr >
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>犬種</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>優寶睛</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>優寶心</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>優寶身</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>優寶骨</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>優寶膚</p></th>
+            </tr>
+      <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
+            <tr>
+              <td width="10%" align="center" bgcolor="#FFFFFF">
+                <p><?php echo $row_RecFlower["pet"];?></a></p>
+              </td>
+              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["eye"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["heart"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["body"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["bone"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <?php echo $row_RecFlower["skin"]; ?>
+                </p></td>
+            </tr>
+      <?php }?>
+          </table>
 </div>
 </div><!--div放白色透明度60%結束-->
 <div class=" col-xs-2 col-md-2"></div>
@@ -131,23 +197,23 @@ var chart = Highcharts.chart('container',{
         }
     },
     yAxis: {
-        min: 0,
+        min: 60,
         title: {
             text: '隻數',
             style:{
                 fontSize:'18px'
-            },
-            labels:{
-                style:{
-                    fontSize:'18px'
-                }
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
             }
         }
     },
     tooltip: {
         // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table><br>',
-        pointFormat: '{series.name}: ' +'{point.y:.1f} 隻<br>',
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 隻<br>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
@@ -155,7 +221,7 @@ var chart = Highcharts.chart('container',{
     plotOptions: {
         column: {
             borderWidth: 0
-        },
+        }
     },
     series: [{
         name: '小型犬',
