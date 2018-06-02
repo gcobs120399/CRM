@@ -91,7 +91,7 @@ $total_pages = ceil($total_records/$pageRow_records);
         <!--<li><a href="user_path.php">使用者行為</a></li>-->
         <li><a href="member_path.php">客群分析</a></li>
         <li class="active"><a href="pet_medicine.php">寵物分析</a></li>
-        <li><a href="personal.php">訂單分析</a></li>
+        <li><a href="orders.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
     </div>
@@ -103,8 +103,8 @@ $total_pages = ceil($total_records/$pageRow_records);
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
   <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
+  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
+  <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
 </div>
 <div class="container col-xs-8 col-md-8">

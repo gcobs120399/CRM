@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `stay`";
+$query_RecFlower = "SELECT * FROM `pet_medicine`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `stay`";
+$query_RecFlower = "SELECT * FROM `pet_medicine`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -43,6 +43,15 @@ $all_RecFlower = mysql_query($query_RecFlower);
 $total_records = mysql_num_rows($all_RecFlower);
 //計算總頁數=(總筆數/每頁筆數)後無條件進位。
 $total_pages = ceil($total_records/$pageRow_records);
+
+
+
+
+for ($i=0; $i <12 ; $i++) {
+  $pre[$i]=rand(100,150);}
+for ($i=0; $i <12 ; $i++) {
+  $pre1[$i]=rand(100,150);}
+$pre = json_encode($pre);
 
 ?>
 <html lang="en">
@@ -72,7 +81,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-     <a class="navbar-brand" href="member_center.php" style="font-size: 24pt;">顧客關係管理之寵物飼料管理</a>
+     <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
     </div>
   </div>
 </nav>
@@ -89,9 +98,9 @@ $total_pages = ceil($total_records/$pageRow_records);
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" style="font-size: 20px;">
-        <li class="active"><a href="user_path.php">使用者行為</a></li>
+        <!--<li><a href="user_path.php">使用者行為</a></li>-->
         <li><a href="member_path.php">客群分析</a></li>
-        <li><a href="pet_medicine.php">寵物分析</a></li>
+        <li class="active"><a href="pet_medicine.php">寵物分析</a></li>
         <li><a href="orders.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
@@ -99,41 +108,39 @@ $total_pages = ceil($total_records/$pageRow_records);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">網頁停留時間</h1>
+<h1 style="text-align:center;">客製化類別分析</h1>
 <hr>
-<div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
-  <a href="user_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">瀏覽路徑紀錄</a><br>
-  <a href="user_user_stay.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁停留時間</a><br>
-  <a href="user_shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化紀錄器</a><br>
-  <a href="user_apparatus.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者裝置紀錄</a><br>
-  <a href="user_area.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">使用者地區紀錄</a>
+ <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
+  <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
+  <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析</a><br>
+  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
+  <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
-  
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
-      <div id="container"></div><!--折線圖-->
+      <div id="container"></div><!--折線圖--><br>
       <br>
       <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
     <tr>
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">平均網頁停留時間</p>
+        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客製化類別分析</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>平均停留時間(秒)</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>顧客編號</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>客製化內容</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF">
-                <p><?php echo $row_RecFlower["s_month"];?></a></p>
+                <p><?php echo $row_RecFlower["pet"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF"><p>
-                <?php echo $row_RecFlower["s_count"]; ?>
+                <?php echo $row_RecFlower["eye"]; ?>
                 </p></td>
             </tr>
       <?php }?>
@@ -162,50 +169,88 @@ burger.addEventListener('click', function (e) {
 <script>
 var chart = Highcharts.chart('container', {
     chart: {
-        type: 'line'
+        zoomType: 'xy'
     },
     title: {
-        text: '2017平均顧客網頁停留時間',
+        text: '訂單金額分析',
         style:{
-                fontSize:'24px'
-              }
-    },
-    subtitle: {
-    },
-    xAxis: {
-        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
-    },
-    yAxis: {
-        title: {
-            text: '平均時間(秒)',
-            style:{
-                fontSize:'18px'
-              }
-        },
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
-    },
-    plotOptions: {
-        line: {
-            dataLabels: {
-                // 開啟數據標籤
-                enabled: true
-            },
-            // 關閉滑鼠追蹤，提示框、點擊事件
-            enableMouseTracking: false
+            fontSize:'24px'
         }
     },
+    subtitle: {},
+    xAxis: [{
+        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}°C',
+            style: {
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
+            }
+        },
+        title: {
+            text: '温度',
+            style: {
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
+            }
+        }
+    }, { // Secondary yAxis
+        title: {
+            text: '降雨量',
+            style: {
+                color: Highcharts.getOptions().colors[0],
+                fontSize:'18px'
+            }
+        },
+        labels: {
+            format: '{value} mm',
+            style: {
+                color: Highcharts.getOptions().colors[0],
+                fontSize:'18px'
+            }
+        },
+        opposite: true
+    }],
+    tooltip: {
+        shared: true,
+        labels:{
+              style:{
+                fontSize:'18px'
+              }
+            }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 120,
+        verticalAlign: 'top',
+        y: 100,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    },
     series: [{
-        name: '時間軸',
-        data: [25.0, 29.9, 29.5, 30.5, 28.4, 24.5, 25.2, 26.5, 23.3, 24.3, 26.9, 29.6]
+        name: '降雨量',
+        type: 'column',
+        yAxis: 1,
+        data: <?php echo $pre;?>,
+        tooltip: {
+            valueSuffix: ' mm'
+        }
+    }, {
+        name: '温度',
+        type: 'spline',
+        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+        tooltip: {
+            valueSuffix: '°C'
+        }
     }]
 });
 </script>
