@@ -122,19 +122,19 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客群屬性</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>年齡</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>男性</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>女性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>年齡</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>男性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>女性</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF">
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["mem"];?></a></p>
               </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["mem_b"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["mem_w"]; ?>
                 </p></td>
                 </p></td>
@@ -222,8 +222,8 @@ var chart = Highcharts.chart('container', {
     },
     tooltip: {
         formatter: function () {
-            return '<b>' + this.series.name + ', 年齡: ' + this.point.category + '</b><br/>' +
-                '人數: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+            return '<b style="font-size:18px">' + this.series.name + ', 年齡: ' + this.point.category + '</b><br/>' +
+                '<span style="font-size:18px">人數: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0)+'</span>';
         }
     },
     series: [{

@@ -103,7 +103,8 @@ $total_pages = ceil($total_records/$pageRow_records);
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
   <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析</a><br>
-  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
+  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(圖)</a><br>
+  <a href="pet_personal_pic.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(表)</a><br>
   <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
 </div>
@@ -122,48 +123,48 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客群寵物體型分析</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" rowspan="2"><p>年齡</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" colspan="4"><p>男性</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" colspan="4"><p>女性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="4"><p>男性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="4"><p>女性</p></th>
             </tr>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF">小型犬</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">中型犬</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">大型犬</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">超大型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">小型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">中型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">大型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">超大型犬</td>
 
-              <td width="5%" align="center" bgcolor="#FFFFFF">小型犬</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">中型犬</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">大型犬</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">超大型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">小型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">中型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">大型犬</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">超大型犬</td>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF">
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["ago"];?></a></p>
               </td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w1"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w2"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w3"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w4"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b1"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b2"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b3"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b4"]; ?>
               </p></td>
                 </p></td>
@@ -257,55 +258,55 @@ var chart = Highcharts.chart('container', {
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
     },
     series: [{
-        name: '男性',
+        name: '<span style="font-size:14px;">男性</span>',
         type: 'column',
         yAxis: 1,
         data: [800,914, 1260, 538],
         tooltip: {
-            valueSuffix: ' 人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },
     },{
-        name: '女性',
+        name: '<span style="font-size:14px;">女性</span>',
         type: 'column',
         yAxis: 1,
         data: [1000, 1142, 1576, 673],
         tooltip: {
-            valueSuffix: ' 人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },
     }, {
-        name: '20以下',
+        name: '<span style="font-size:14px;">20以下</span>',
         type: 'spline',
         data: [215, 212, 375, 67],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '21-30',
+        name: '<span style="font-size:14px;">21-30</span>',
         type: 'spline',
         data: [380, 460, 596, 280],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '31-40',
+        name: '<span style="font-size:14px;">31-40</span>',
         type: 'spline',
         data: [580, 739, 855, 516],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '41-50',
+        name: '<span style="font-size:14px;">41-50</span>',
         type: 'spline',
         data: [400, 460, 620, 293],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '51以上',
+        name: '<span style="font-size:14px;">51以上</span>',
         type: 'spline',
         data: [225, 185,390, 75],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     }]
 });

@@ -123,23 +123,23 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">購物車歷史紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>產品名稱</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>有購買</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>無購買</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>總瀏覽人數</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>產品名稱</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>有購買</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>無購買</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>總瀏覽人數</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF">
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["proudct"];?></a></p>
               </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["s_y"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["s_n"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["s_all"]; ?>
                 </p></td>
             </tr>
@@ -190,14 +190,14 @@ var chart = Highcharts.chart('container', {
     }],
     yAxis: [{ // Primary yAxis
         labels: {
-            format: '{value}',
+            format: '<span style="font-size:18px;">{value}</span>',
             style: {
                 color: Highcharts.getOptions().colors[1],
                 fontSize:'18px'
             }
         },
         title: {
-            text: '人數',
+            text: '<span style="font-size:18px;">人數</span>',
             style: {
                 color: Highcharts.getOptions().colors[1],
                 fontSize:'18px'
@@ -212,7 +212,7 @@ var chart = Highcharts.chart('container', {
             }
         },
         labels: {
-            format: '{value} 個',
+            format: '<span style="font-size:18px;">{value} 個</span>',
             style: {
                 color: Highcharts.getOptions().colors[0],
                 fontSize:'18px'
@@ -228,32 +228,33 @@ var chart = Highcharts.chart('container', {
         align: 'left',
         x: 300,
         verticalAlign: 'top',
-        y: 75,
+        y: 60,
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
     },
     series: [{
-        name: '有購買',
+        name: '<span style="font-size:18px;">有購買</span>',
         type: 'column',
         yAxis: 1,
         data: [1629,1264, 1462, 2158,1390],
         tooltip: {
-            valueSuffix: ' 個'
-        },
+            valueSuffix: '<span style="font-size:18px;"> 個</span>',
+            style: {fontSize:'18px'}
+        }
     },{
-        name: '無購買',
+        name: '<span style="font-size:18px;">無購買</span>',
         type: 'column',
         yAxis: 1,
         data: [652, 506, 585, 863,556],
         tooltip: {
-            valueSuffix: ' 個'
+            valueSuffix: '<span style="font-size:18px;"> 個</span>'
         },
     }, {
-        name: '總人數',
+        name: '<span style="font-size:18px;">總人數</span>',
         type: 'spline',
         data: [3462, 2164, 2834, 4202,2340],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:18px;"> 人</span>'
         }
     }]
 });

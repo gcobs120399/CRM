@@ -122,56 +122,56 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客群購買</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" rowspan="2"><p>年齡</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" colspan="5"><p>男性</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;" colspan="5"><p>女性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="5"><p>男性</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="5"><p>女性</p></th>
             </tr>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶膚</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶心</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶睛</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶身</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶骨</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶膚</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶心</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶睛</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶身</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶骨</td>
 
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶膚</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶心</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶睛</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶身</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF">優寶骨</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶膚</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶心</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶睛</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶身</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶骨</td>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF">
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["ago"];?></a></p>
               </td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w1"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w2"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w3"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w4"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["w5"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b1"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b2"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b3"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b4"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["b5"]; ?>
               </p></td>
                 </p></td>
@@ -254,67 +254,72 @@ var chart = Highcharts.chart('container', {
         opposite: true
     }],
     tooltip: {
-        shared: true
+        shared: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
     },
     legend: {
         layout: 'vertical',
         align: 'left',
         x: 850,
         verticalAlign: 'top',
-        y: 50,
+        y: 20,
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
     },
     series: [{
-        name: '男性',
+        name: '<span style="font-size:14px;">男性</span>',
         type: 'column',
         yAxis: 1,
         data: [631,574, 609, 898,635],
         tooltip: {
-            valueSuffix: ' 人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },
     },{
-        name: '女性',
+        name: '<span style="font-size:14px;">女性',
         type: 'column',
         yAxis: 1,
         data: [965, 690, 853, 1260,755],
         tooltip: {
-            valueSuffix: ' 人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },
     }, {
-        name: '20以下',
+        name: '<span style="font-size:14px;">20以下</span>',
         type: 'spline',
         data: [77, 173, 127, 183,195],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '21-30',
+        name: '<span style="font-size:14px;">21-30</span>',
         type: 'spline',
         data: [362, 264, 293, 468,290],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '31-40',
+        name: '<span style="font-size:14px;">31-40</span>',
         type: 'spline',
         data: [713, 391, 570, 849,417],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '41-50',
+        name: '<span style="font-size:14px;">41-50</span>',
         type: 'spline',
         data: [386, 272, 333, 492,190],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
-        name: '51以上',
+        name: '<span style="font-size:14px;">51以上</span>',
         type: 'spline',
         data: [58, 164,115, 166,190],
         tooltip: {
-            valueSuffix: '人'
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     }]
 });

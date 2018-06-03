@@ -92,7 +92,7 @@ $total_pages = ceil($total_records/$pageRow_records);
         <!--<li><a href="user_path.php">使用者行為</a></li>-->
         <li class="active"><a href="member_path.php">客群分析</a></li>
         <li><a href="pet_medicine.php">寵物分析</a></li>
-        <li><a href="personal.php">訂單分析</a></li>
+        <li><a href="orders.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
     </div>
@@ -123,27 +123,27 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">平均瀏覽路徑紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>月份</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>FB</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>MOMO</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>搜尋引擎</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>部落格</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>月份</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>FB</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>MOMO</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>搜尋引擎</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>部落格</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF">
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["p_month"];?></a></p>
               </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["p_fb"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["p_momo"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["p_find"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["p_blog"]; ?>
                 </p></td>
             </tr>

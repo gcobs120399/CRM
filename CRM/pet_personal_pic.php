@@ -107,7 +107,7 @@ $pre = json_encode($pre);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">客製化類別分析(表)</h1>
+<h1 style="text-align:center;">客製化類別分析(圖)</h1>
 <hr>
  <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
@@ -121,28 +121,9 @@ $pre = json_encode($pre);
   <!--內文-->
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
-      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
-    <tr>
-    <td class="tdbline">
-    <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
-      <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客製化肉品報表</p>
-          <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
-            <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>顧客編號</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>肉品</p></th>
-            </tr>
-      <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
-            <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
-                <p><?php echo $row_RecFlower["pet"];?></a></p>
-              </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["eye"]; ?>
-                </p></td>
-            </tr>
-      <?php }?>
-          </table>
+      <div id="container"></div><!--折線圖--><br>
+      <div id="container1"></div><!--折線圖--><br>
+      <div id="container2"></div><!--折線圖--><br>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
 </div><!--div放白色透明度60%結束-->
@@ -162,6 +143,136 @@ burger.addEventListener('click', function (e) {
     e.preventDefault();
     document.body.classList.toggle('open');
     burger.classList.toggle('open');
+});
+</script>
+<script>
+var chart = Highcharts.chart('container', {
+    title: {
+        text: '客製化肉品分析',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:18px;">{series.name}<br></span>',
+        pointFormat: '<span style="font-size:18px;">{point.name}: <b style="font-size:18px;">{point.percentage:.1f}%</b></span>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,  // 可以被选择
+            cursor: 'pointer',       // 鼠标样式
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    fontSize:'18px'
+                }
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: '客製化肉品',
+        data: [
+            ['雞肉',25.5],
+            ['鹿肉',10.7],
+            {
+                name: '牛肉',
+                y: 34.1,
+                sliced: true,  // 默认突出
+                selected: true // 默认选中
+            },
+            ['鴨肉',10.4],
+            ['羊肉',20.2]
+        ]
+    }]
+});
+var chart = Highcharts.chart('container1', {
+    title: {
+        text: '客製化加強分析(單一種)',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:18px;">{series.name}<br></span>',
+        pointFormat: '<span style="font-size:18px;">{point.name}: <b style="font-size:18px;">{point.percentage:.1f}%</b></span>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,  // 可以被选择
+            cursor: 'pointer',       // 鼠标样式
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    fontSize:'18px'
+                }
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: '客製化加強(單一種)',
+        data: [
+            ['血糖管理', 19.9],
+            ['肥胖代謝', 26.8],
+            {
+                name: '增重',
+                y: 33.5,
+                sliced: true,  // 默认突出
+                selected: true // 默认选中 
+            },
+            ['腎臟護理', 19.8]
+        ]
+    }]
+});
+var chart = Highcharts.chart('container2', {
+    title: {
+        text: '客製化加強分析',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:18px;">{series.name}<br></span>',
+        pointFormat: '<span style="font-size:18px;">{point.name}: <b style="font-size:18px;">{point.percentage:.1f}%</b></span>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,  // 可以被选择
+            cursor: 'pointer',       // 鼠标样式
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    fontSize:'16px'
+                }
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: '客製化加強肉品',
+        data: [
+            ['環境除臭', 11.1],
+            ['心臟護理', 21.5],
+            {
+                name: '消化系統護理',
+                y: 25.2,
+                /*sliced: true,  // 默认突出
+                selected: true // 默认选中 */
+            },
+            ['泌尿道', 9.1],
+            ['關節管理',7.3],
+            ['視力保健',8.2],
+            ['皮膚護理', 5.7],
+            ['亮毛護理', 11.9]
+        ]
+    }]
 });
 </script>
 </html>

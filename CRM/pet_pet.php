@@ -113,7 +113,8 @@ $pre = json_encode($pre);
  <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
   <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析</a><br>
-  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析</a><br>
+  <a href="pet_personal_pic.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(圖)</a><br>
+  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(表)</a><br>
   <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
 </div>
@@ -131,19 +132,19 @@ $pre = json_encode($pre);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">寵物及客製化分析</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>顧客編號</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>犬種</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>客製化內容</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>顧客編號</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>犬種</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>客製化內容</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF">
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["pet"];?></a></p>
               </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["eye"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["heart"]; ?>
                 </p></td>
             </tr>

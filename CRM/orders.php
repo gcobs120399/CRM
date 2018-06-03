@@ -130,23 +130,23 @@ $pre = json_encode($pre);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">訂單金額分析</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>顧客編號</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>性別</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>金額</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;"><p>客製化內容</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>顧客編號</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>性別</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>金額</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>客製化內容</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="10%" align="center" bgcolor="#FFFFFF">
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["pet"];?></a></p>
               </td>
-              <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["eye"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["heart"]; ?>
                 </p></td>
-                <td width="10%" align="center" bgcolor="#FFFFFF"><p>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["body"]; ?>
                 </p></td>
             </tr>
