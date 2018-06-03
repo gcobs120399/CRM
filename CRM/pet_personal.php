@@ -17,12 +17,12 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `pet_medicine`";
+$query_RecFlower = "SELECT * FROM `food`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
 //預設每頁筆數
-$pageRow_records = 12;
+$pageRow_records = 15;
 //預設頁數
 $num_pages = 1;
 //若已經有翻頁，將頁數更新
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `pet_medicine`";
+$query_RecFlower = "SELECT * FROM `food` ORDER BY `o_no`,`dog`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -43,9 +43,6 @@ $all_RecFlower = mysql_query($query_RecFlower);
 $total_records = mysql_num_rows($all_RecFlower);
 //計算總頁數=(總筆數/每頁筆數)後無條件進位。
 $total_pages = ceil($total_records/$pageRow_records);
-
-
-
 
 for ($i=0; $i <12 ; $i++) {
   $pre[$i]=rand(100,150);}
@@ -115,7 +112,7 @@ $pre = json_encode($pre);
   <a href="pet_personal_pic.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(圖)</a><br>
   <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(表)</a><br>
   <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客戶活躍度分析</a><br>
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
@@ -130,18 +127,43 @@ $pre = json_encode($pre);
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>顧客編號</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>肉品</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>犬種</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>主要肉品</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="2"><p>加強效果</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
-                <p><?php echo $row_RecFlower["pet"];?></a></p>
+                <p><?php echo $row_RecFlower["o_no"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["eye"]; ?>
+                <?php echo $row_RecFlower["dog"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["mean"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["buff"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["buff1"]; ?>
                 </p></td>
             </tr>
       <?php }?>
+      <hr size="1" />
+          <table width="98%" border="0px" align="center" cellpadding="4" cellspacing="0">
+            <tr>
+              <td valign="middle"><p style="font-size: 20px;">資料筆數：<?php echo $total_records;?></p></td>
+              <td align="right"><p style="font-size: 20px;">
+                  <?php if ($num_pages > 1) { // 若不是第一頁則顯示 ?>
+                  <a href="?page=1">第一頁</a> | <a href="?page=<?php echo $num_pages-1;?>">上一頁</a> |
+                <?php }?>
+                  <?php if ($num_pages < $total_pages) { // 若不是最後一頁則顯示 ?>
+                  <a href="?page=<?php echo $num_pages+1;?>">下一頁</a> | <a href="?page=<?php echo $total_pages;?>">最末頁</a>
+                  <?php }?>
+              </p></td>
+            </tr>
+          </table>
           </table>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>

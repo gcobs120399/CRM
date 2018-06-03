@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `pet_medicine`";
+$query_RecFlower = "SELECT * FROM `food`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `pet_medicine`";
+$query_RecFlower = "SELECT * FROM `food` ORDER BY `o_no`,`dog`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -45,12 +45,8 @@ $total_records = mysql_num_rows($all_RecFlower);
 $total_pages = ceil($total_records/$pageRow_records);
 
 
-
-
 for ($i=0; $i <12 ; $i++) {
   $pre[$i]=rand(100,150);}
-for ($i=0; $i <12 ; $i++) {
-  $pre1[$i]=rand(100,150);}
 $pre = json_encode($pre);
 
 ?>
@@ -116,13 +112,15 @@ $pre = json_encode($pre);
   <a href="pet_personal_pic.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(圖)</a><br>
   <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(表)</a><br>
   <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>
-  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">忠誠客戶關係分析</a><br>
+  <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客戶活躍度分析</a><br>
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖--><br>
+      <div id="container1"></div><!--折線圖--><br>
+      <div id="container2"></div><!--折線圖--><br>
       <br>
       <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
     <tr>
@@ -134,21 +132,42 @@ $pre = json_encode($pre);
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>顧客編號</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>犬種</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>客製化內容</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>主要肉品</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="2"><p>加強效果</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
-                <p><?php echo $row_RecFlower["pet"];?></a></p>
+                <p><?php echo $row_RecFlower["o_no"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["eye"]; ?>
+                <?php echo $row_RecFlower["dog"]; ?>
                 </p></td>
                 <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["heart"]; ?>
+                <?php echo $row_RecFlower["mean"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["buff"]; ?>
+                </p></td>
+                <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["buff1"]; ?>
                 </p></td>
             </tr>
       <?php }?>
+      <hr size="1" />
+          <table width="98%" border="0px" align="center" cellpadding="4" cellspacing="0">
+            <tr>
+              <td valign="middle"><p style="font-size: 20px;">資料筆數：<?php echo $total_records;?></p></td>
+              <td align="right"><p style="font-size: 20px;">
+                  <?php if ($num_pages > 1) { // 若不是第一頁則顯示 ?>
+                  <a href="?page=1">第一頁</a> | <a href="?page=<?php echo $num_pages-1;?>">上一頁</a> |
+                <?php }?>
+                  <?php if ($num_pages < $total_pages) { // 若不是最後一頁則顯示 ?>
+                  <a href="?page=<?php echo $num_pages+1;?>">下一頁</a> | <a href="?page=<?php echo $total_pages;?>">最末頁</a>
+                  <?php }?>
+              </p></td>
+            </tr>
+          </table>
           </table>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
@@ -172,90 +191,170 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container', {
+var chart = Highcharts.chart('container1', {
     chart: {
-        zoomType: 'xy'
+        type: 'bar'
     },
     title: {
-        text: '訂單金額分析',
+        text: '主要肉品',
         style:{
             fontSize:'24px'
         }
     },
-    subtitle: {},
-    xAxis: [{
-        categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
-        crosshair: true,
+    xAxis: {
+        categories: ['雞肉', '牛肉', '鴨肉', '鹿肉', '羊肉'],
         labels:{
             style:{
                 fontSize:'18px'
             }
         }
-    }],
-    yAxis: [{ // Primary yAxis
-        labels: {
-            format: '{value}°C',
-            style: {
-                color: Highcharts.getOptions().colors[1],
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '犬隻數量',
+            style:{
                 fontSize:'18px'
             }
         },
-        title: {
-            text: '温度',
-            style: {
-                color: Highcharts.getOptions().colors[1],
+        labels:{
+            style:{
                 fontSize:'18px'
             }
         }
-    }, { // Secondary yAxis
-        title: {
-            text: '降雨量',
-            style: {
-                color: Highcharts.getOptions().colors[0],
-                fontSize:'18px'
-            }
-        },
-        labels: {
-            format: '{value} mm',
-            style: {
-                color: Highcharts.getOptions().colors[0],
-                fontSize:'18px'
-            }
-        },
-        opposite: true
-    }],
-    tooltip: {
-        shared: true,
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
     },
     legend: {
-        layout: 'vertical',
-        align: 'left',
-        x: 120,
-        verticalAlign: 'top',
-        y: 100,
-        floating: true,
-        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+        /* 图例显示顺序反转
+         * 这是因为堆叠的顺序默认是反转的，可以设置 
+         * yAxis.reversedStacks = false 来达到类似的效果 
+         */
+        reversed: true 
+    },
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
     },
     series: [{
-        name: '降雨量',
-        type: 'column',
-        yAxis: 1,
-        data: <?php echo $pre;?>,
-        tooltip: {
-            valueSuffix: ' mm'
-        }
+        name: '小型犬',
+        data: [6, 7, 3, 0, 7]
     }, {
-        name: '温度',
-        type: 'spline',
-        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
-        tooltip: {
-            valueSuffix: '°C'
+        name: '中型犬',
+        data: [7, 7, 7, 2, 3]
+    }, {
+        name: '大型犬',
+        data: [7, 3, 5, 2, 7]
+    }, {
+        name: '超大型犬',
+        data: [4, 2, 5, 5, 11]
+    }]
+});
+var chart = Highcharts.chart('container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: '加強護理',
+        style:{
+            fontSize:'24px'
         }
+    },
+    xAxis: {
+        categories: ['血糖管理', '肥胖代謝', '腎臟管理', '增重'],
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '犬隻數量',
+            style:{
+                fontSize:'18px'
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    legend: {
+        reversed: true
+    },
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    },
+    series: [{
+        name: '小型犬',
+        data: [ 4, 5, 6, 8]
+    }, {
+        name: '中型犬',
+        data: [7, 5, 6, 8]
+    }, {
+        name: '大型犬',
+        data: [8, 3, 9, 4]
+    }, {
+        name: '超大型犬',
+        data: [6, 9, 8, 4]
+    }]
+});
+var chart = Highcharts.chart('container2', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: '加強護理',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    xAxis: {
+        categories: ['心臟管理', '皮膚護理', '泌尿道', '亮毛護理', '消化系統', '視力保健', '環境除臭', '關節管理'],
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '犬隻數量',
+            style:{
+                fontSize:'18px'
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    legend: {
+        reversed: true 
+    },
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    },
+    series: [{
+        name: '小型犬',
+        data: [ 2, 5, 4, 2, 2, 2, 1, 5]
+    }, {
+        name: '中型犬',
+        data: [ 4, 1, 3, 4, 3, 4, 4, 3]
+    }, {
+        name: '大型犬',
+        data: [ 3, 3, 5, 3, 0, 2, 6, 2]
+    }, {
+        name: '超大型犬',
+        data: [ 4, 2, 5, 2, 5, 2, 4, 3]
     }]
 });
 </script>
