@@ -92,20 +92,20 @@ $total_pages = ceil($total_records/$pageRow_records);
         <!--<li><a href="user_path.php">使用者行為</a></li>-->
         <li class="active"><a href="member_path.php">客群分析</a></li>
         <li><a href="pet_medicine.php">寵物分析</a></li>
-        <li><a href="personal.php">訂單分析</a></li>
+        <li><a href="orders.php">訂單分析</a></li>
         <li><a href="?logout=true">登出</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">購物車歷史紀錄</h1>
+<h1 style="text-align:center;">購物紀錄</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="member_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁平均瀏覽</a><br>
   <a href="member_attributes.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群屬性</a><br>
   <a href="member_buy.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群購買</a><br>
-  <a href="member_shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物車歷史紀錄</a><br>
+  <a href="member_shop.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">購物紀錄</a><br>
   <a href="#" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客戶活躍度</a>
 </div>
 <div class="container col-xs-8 col-md-8">
@@ -120,7 +120,7 @@ $total_pages = ceil($total_records/$pageRow_records);
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">購物車歷史紀錄</p>
+        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">購物紀錄</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>產品名稱</p></th>
@@ -172,7 +172,7 @@ var chart = Highcharts.chart('container', {
         zoomType: 'xy'
     },
     title: {
-        text: '購物車歷史紀錄',
+        text: '購物紀錄',
         style:{
             fontSize:'24px'
         }
