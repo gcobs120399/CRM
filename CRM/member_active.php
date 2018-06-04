@@ -17,12 +17,12 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `mem_buy`";
+$query_RecFlower = "SELECT * FROM `order1` ORDER BY `o_no`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
 //預設每頁筆數
-$pageRow_records = 12;
+$pageRow_records = 10;
 //預設頁數
 $num_pages = 1;
 //若已經有翻頁，將頁數更新
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `mem_buy`";
+$query_RecFlower = "SELECT o_no,sex, COUNT(*) AS `B_count` FROM order1 GROUP BY o_no HAVING COUNT(*)>0";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -100,7 +100,7 @@ $total_pages = ceil($total_records/$pageRow_records);
 </nav>
 
 <br><br><br>
-<h1 style="text-align:center;">客群購買</h1><hr>
+<h1 style="text-align:center;">客戶活躍度</h1><hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="member_path.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">網頁平均瀏覽</a><br>
   <a href="member_attributes.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群屬性</a><br>
@@ -114,69 +114,44 @@ $total_pages = ceil($total_records/$pageRow_records);
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖-->
       <br>
-      <table width="100%" border="0px" align="center" cellpadding="4" cellspacing="0">
+      <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
     <tr>
     <td class="tdbline">
     <table width="100%" border="0px" cellspacing="0" cellpadding="10" style="font-size: 20px;">
       <tr valign="top">
-        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客群購買</p>
+        <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客戶活躍度</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
-            <tr>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="5"><p>男性</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" colspan="5"><p>女性</p></th>
-            </tr>
-            <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶膚</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶心</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶睛</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶身</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶骨</td>
-
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶膚</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶心</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶睛</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶身</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶骨</td>
+            <tr >
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>編號</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>性別</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>次數</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
-                <p><?php echo $row_RecFlower["ago"];?></a></p>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
+                <p><?php echo $row_RecFlower["o_no"];?></a></p>
               </td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["w1"]; ?>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["sex"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["w2"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["w3"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["w4"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["w5"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["b1"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["b2"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["b3"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["b4"]; ?>
-              </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["b5"]; ?>
-              </p></td>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["B_count"]; ?>
                 </p></td>
+            <?php }?>
             </tr>
-      <?php }?>
+      <hr size="1" />
+          <table width="98%" border="0px" align="center" cellpadding="4" cellspacing="0">
+            <tr>
+              <td valign="middle"><p>資料筆數：<?php echo $total_records;?></p></td>
+              <td align="right"><p>
+                  <?php if ($num_pages > 1) { // 若不是第一頁則顯示 ?>
+                  <a href="?page=1">第一頁</a> | <a href="?page=<?php echo $num_pages-1;?>">上一頁</a> |
+                <?php }?>
+                  <?php if ($num_pages < $total_pages) { // 若不是最後一頁則顯示 ?>
+                  <a href="?page=<?php echo $num_pages+1;?>">下一頁</a> | <a href="?page=<?php echo $total_pages;?>">最末頁</a>
+                  <?php }?>
+              </p></td>
+            </tr>
           </table>
     <div style="display: table-cell;vertical-align: middle;"></div>
 </div>
@@ -200,127 +175,62 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container', {
+var chart = Highcharts.chart('container',{
     chart: {
-        zoomType: 'xy'
+        type: 'column'
     },
     title: {
-        text: '客群購買',
+        text: '客戶活躍度',
         style:{
-            fontSize:'24px'
-        }
+                fontSize:'24px'
+              }
     },
     subtitle: {
     },
-    xAxis: [{
-        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚','優寶身'],
+    xAxis: {
+        categories: [
+            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
+        ],
         crosshair: true,
         labels:{
-            style:{
+              style:{
                 fontSize:'18px'
+              }
             }
-        }
-    }],
-    yAxis: [{ // Primary yAxis
-        labels: {
-            format: '{value}',
-            style: {
-                color: Highcharts.getOptions().colors[1],
-                fontSize:'18px'
-            }
-        },
-        title: {
-            text: '人數',
-            style: {
-                color: Highcharts.getOptions().colors[1],
-                fontSize:'18px'
-            }
-        }
-    }, { // Secondary yAxis
-        title: {
-            text: '人數',
-            style: {
-                color: Highcharts.getOptions().colors[0],
-                fontSize:'18px'
-            }
-        },
-        labels: {
-            format: '{value} 人',
-            style: {
-                color: Highcharts.getOptions().colors[0],
-                fontSize:'18px'
-            }
-        },
-        opposite: true
-    }],
-    tooltip: {
-        shared: true,
-        labels:{
-            style:{
-                fontSize:'18px'
-            }
-        }
     },
-    legend: {
-        layout: 'vertical',
-        align: 'left',
-        x: 850,
-        verticalAlign: 'top',
-        y: 20,
-        floating: true,
-        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    yAxis: {
+
+        title: {
+            text: '次數',
+            style:{
+                fontSize:'18px'
+              }
+        },
+        labels:{
+              style:{
+                fontSize:'18px'
+              }
+            }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 次<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
     },
     series: [{
-        name: '<span style="font-size:14px;">男性</span>',
-        type: 'column',
-        yAxis: 1,
-        data: [631,574, 609, 898,635],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        },
-    },{
-        name: '<span style="font-size:14px;">女性',
-        type: 'column',
-        yAxis: 1,
-        data: [965, 690, 853, 1260,755],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        },
+        name: '男',
+        data: [5, 1, 5, 3, 2, 3, 4, 7, 1, 5, 3, 3]
     }, {
-        name: '<span style="font-size:14px;">20以下</span>',
-        type: 'spline',
-        data: [77, 173, 127, 183,195],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">21-30</span>',
-        type: 'spline',
-        data: [362, 264, 293, 468,290],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">31-40</span>',
-        type: 'spline',
-        data: [713, 391, 570, 849,417],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">41-50</span>',
-        type: 'spline',
-        data: [386, 272, 333, 492,190],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">51以上</span>',
-        type: 'spline',
-        data: [58, 164,115, 166,190],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
+        name: '女',
+        data: [3, 2, 7, 4, 2, 6, 3, 6, 4, 6, 6, 9]
     }]
 });
 </script>
