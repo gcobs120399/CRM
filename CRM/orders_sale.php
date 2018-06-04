@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `food` ORDER BY `o_no`,`buff`";
+$query_RecFlower = "SELECT * FROM `order1` ORDER BY `o_no`,`date`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM food ";
+$query_RecFlower = "SELECT * FROM order1 ";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -122,7 +122,7 @@ $total_pages = ceil($total_records/$pageRow_records);
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>編號</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>日期</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>訂單日期</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>是否有促銷</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
@@ -131,10 +131,12 @@ $total_pages = ceil($total_records/$pageRow_records);
                 <p><?php echo $row_RecFlower["o_no"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["sex"]; ?>
+                <?php echo $row_RecFlower["date"]; ?>
               </p></td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["buff"]; ?>
+                <?php if (($row_RecFlower["date"]>="2017-01-01" && $row_RecFlower["date"]>="2017-01-08") OR ($row_RecFlower["date"]>="2017-02-15" && $row_RecFlower["date"]<="2017-02-22") OR ($row_RecFlower["date"]>="2017-05-07"&&$row_RecFlower["date"]<="2017-05-14") OR ($row_RecFlower["date"]>="2017-08-01"&&$row_RecFlower["date"]<="2017-08-08") OR ($row_RecFlower["date"]>="2017-10-03"&&$row_RecFlower["date"]<="2017-10-10") OR ($row_RecFlower["date"]>="2017-12-17"&&$row_RecFlower["date"]<="2017-12-25")) {?>
+                  <?php echo "否"; ?>
+               <?php }else{echo "是"; } ?>
               </p></td>
             <?php }?>
             </tr>
@@ -174,68 +176,43 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container',{
-    chart: {
-        type: 'column'
-    },
+var chart = Highcharts.chart('container', {
     title: {
-        text: '合買分析',
+        text: '促銷成效比例',
         style:{
             fontSize:'24px'
         }
     },
-    subtitle: {
-    },
-    xAxis: {
-        categories: ['增重','腎臟管理','血糖管理','肥胖代謝'],
-        crosshair: true,
-        labels:{
-            style:{
-                fontSize:'18px'
-            }
-        }
-    },
-    yAxis: {
-        title: {
-            text: '人數',
-            style:{
-                fontSize:'18px'
-            }
-        },
-        labels:{
-            style:{
-                fontSize:'18px'
-            }
-        }
-    },
     tooltip: {
-        // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
-        pointFormat: '{series.name}:' +'{point.y:.1f} 人<br>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
+        headerFormat: '<span style="font-size:18px;">{series.name}<br></span>',
+        pointFormat: '<span style="font-size:18px;">{point.name}: <b style="font-size:18px;">{point.percentage:.1f}%</b></span>'
     },
     plotOptions: {
-        column: {
-            borderWidth: 0
+        pie: {
+            allowPointSelect: true,  // 可以被选择
+            cursor: 'pointer',       // 鼠标样式
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    fontSize:'18px'
+                }
+            }
         }
     },
     series: [{
-        name: '優寶心',
-        data: [5, 7, 1, 1]
-    }, {
-        name: '優寶睛',
-        data: [8, 5, 9, 3]
-    }, {
-        name: '優寶身',
-        data: [ 4, 4, 4, 10]
-    }, {
-        name: '優寶骨',
-        data: [ 7, 5, 4, 4]
-    }, {
-        name: '優寶膚',
-        data: [ 6, 6, 1, 6]
+        type: 'pie',
+        name: '促銷成效比例',
+        data: [
+            ['是', 12.2],
+            {
+                name: '否',
+                y: 87.8,
+                sliced: true,  // 默认突出
+                selected: true // 默认选中 
+            }
+        ]
     }]
 });
 </script>

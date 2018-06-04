@@ -112,6 +112,7 @@ $total_pages = ceil($total_records/$pageRow_records);
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
       <div id="container"></div><!--折線圖--><br>
+      <div id="container1"></div><!--折線圖--><br>
       <br>
       <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
     <tr>
@@ -233,6 +234,45 @@ var chart = Highcharts.chart('container',{
     }, {
         name: '女',
         data: [12, 6]
+    }]
+});
+var chart = Highcharts.chart('container1', {
+    title: {
+        text: '續買比例',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:18px;">{series.name}<br></span>',
+        pointFormat: '<span style="font-size:18px;">{point.name}: <b style="font-size:18px;">{point.percentage:.1f}%</b></span>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,  // 可以被选择
+            cursor: 'pointer',       // 鼠标样式
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                    fontSize:'18px'
+                }
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: '續買比例',
+        data: [
+            ['有續買', 48.3],
+            {
+                name: '無續買',
+                y: 51.7,
+                sliced: true,  // 默认突出
+                selected: true // 默认选中
+            }
+        ]
     }]
 });
 </script>
