@@ -151,6 +151,20 @@ $total_pages = ceil($total_records/$pageRow_records);
                 </p></td>
             </tr>
       <?php }?>
+      <hr size="1" />
+          <table width="98%" border="0px" align="center" cellpadding="4" cellspacing="0">
+            <tr>
+              <td valign="middle"><p>資料筆數：<?php echo $total_records;?></p></td>
+              <td align="right"><p>
+                  <?php if ($num_pages > 1) { // 若不是第一頁則顯示 ?>
+                  <a href="?page=1">第一頁</a> | <a href="?page=<?php echo $num_pages-1;?>">上一頁</a> |
+                <?php }?>
+                  <?php if ($num_pages < $total_pages) { // 若不是最後一頁則顯示 ?>
+                  <a href="?page=<?php echo $num_pages+1;?>">下一頁</a> | <a href="?page=<?php echo $total_pages;?>">最末頁</a>
+                  <?php }?>
+              </p></td>
+            </tr>
+          </table>
           </table>
 </div>
 </div><!--div放白色透明度60%結束-->
