@@ -125,7 +125,7 @@ $total_pages = ceil($total_records/$pageRow_records);
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>犬種</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶睛</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶心</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶身</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶生</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶骨</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶膚</p></th>
             </tr>
@@ -187,7 +187,7 @@ var chart = Highcharts.chart('container',{
     },
     xAxis: {
         categories: [
-            "優寶睛", "優寶心", "優寶身", "優寶骨", "優寶膚"
+            "優寶睛", "優寶心", "優寶生", "優寶骨", "優寶膚"
         ],
         crosshair: true,
         labels:{

@@ -130,13 +130,13 @@ $total_pages = ceil($total_records/$pageRow_records);
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶膚</td>
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶心</td>
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶睛</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶身</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶生</td>
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶骨</td>
 
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶膚</td>
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶心</td>
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶睛</td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶身</td>
+              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶生</td>
               <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">優寶骨</td>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
