@@ -207,8 +207,8 @@ var chart = Highcharts.chart('container', {
                 return (Math.abs(this.value) / 1) + '人';
             }
         },
-        min: -1250,
-        max: 1800,
+        min: -200,
+        max: 200,
         labels:{
             style:{
                 fontSize:'18px'
@@ -228,10 +228,10 @@ var chart = Highcharts.chart('container', {
     },
     series: [{
         name: '男',
-        data: [-300, -750, -1200, -800,-300]
+        data: [-25, -109, -108, -127,-163]
     }, {
         name: '女',
-        data: [451, 951, 1770, 981, 400]
+        data: [26, 106, 103, 84, 149]
     }]
 });
 </script>

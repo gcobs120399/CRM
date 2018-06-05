@@ -213,7 +213,7 @@ var chart = Highcharts.chart('container', {
     subtitle: {
     },
     xAxis: [{
-        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚','優寶身'],
+        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚','優寶生'],
         crosshair: true,
         labels:{
             style:{
@@ -274,7 +274,7 @@ var chart = Highcharts.chart('container', {
         name: '<span style="font-size:14px;">男性</span>',
         type: 'column',
         yAxis: 1,
-        data: [631,574, 609, 898,635],
+        data: [1159,1192,1179,1141,1176],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },
@@ -282,42 +282,42 @@ var chart = Highcharts.chart('container', {
         name: '<span style="font-size:14px;">女性',
         type: 'column',
         yAxis: 1,
-        data: [965, 690, 853, 1260,755],
+        data: [800,998,972,1035,1035],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },
     }, {
         name: '<span style="font-size:14px;">20以下</span>',
         type: 'spline',
-        data: [77, 173, 127, 183,195],
+        data: [109,126,115,109,119],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
         name: '<span style="font-size:14px;">21-30</span>',
         type: 'spline',
-        data: [362, 264, 293, 468,290],
+        data: [455,439,467,443,476],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
         name: '<span style="font-size:14px;">31-40</span>',
         type: 'spline',
-        data: [713, 391, 570, 849,417],
+        data: [481,454,443,496,471],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
         name: '<span style="font-size:14px;">41-50</span>',
         type: 'spline',
-        data: [386, 272, 333, 492,190],
+        data: [446,494,449,465,490],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
     },{
         name: '<span style="font-size:14px;">51以上</span>',
         type: 'spline',
-        data: [58, 164,115, 166,190],
+        data: [670,678,677,662,657],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         }
