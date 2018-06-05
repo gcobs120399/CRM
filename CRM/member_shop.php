@@ -180,7 +180,7 @@ var chart = Highcharts.chart('container', {
     subtitle: {
     },
     xAxis: [{
-        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚','優寶身'],
+        categories: ['優寶心', '優寶骨', '優寶睛', '優寶膚','優寶生'],
         crosshair: true,
         labels:{
             style:{
