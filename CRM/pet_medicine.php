@@ -22,7 +22,7 @@ $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
 //預設每頁筆數
-$pageRow_records = 12;
+$pageRow_records = 10;
 //預設頁數
 $num_pages = 1;
 //若已經有翻頁，將頁數更新
@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT * FROM `pet_medicine`";
+$query_RecFlower = "SELECT * FROM `pet_medicine` ORDER BY p_id ";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -43,6 +43,29 @@ $all_RecFlower = mysql_query($query_RecFlower);
 $total_records = mysql_num_rows($all_RecFlower);
 //計算總頁數=(總筆數/每頁筆數)後無條件進位。
 $total_pages = ceil($total_records/$pageRow_records);
+
+
+
+$data = "SELECT * FROM `pet_medicine` ORDER BY `p_id` "; //查詢FROM 資料表 where 判斷式
+$resultub = mysql_query($data);
+while ($row = mysql_fetch_array($resultub)){
+  $pet[]=intval($row["pet"]);
+  $eye[]=intval($row["eye"]);
+  $heart[]=intval($row["heart"]);
+  $body[]=intval($row["body"]);
+  $bone[]=intval($row["bone"]);
+  $skin[]=intval($row["skin"]);
+}
+$data = array(array("name"=>"優寶睛","data"=>$eye));
+$data = json_encode($data);
+$data1 = array(array("name"=>"優寶心","data"=>$heart));
+$data1 = json_encode($data1);
+$data2 = array(array("name"=>"優寶生","data"=>$body));
+$data2 = json_encode($data2);
+$data3 = array(array("name"=>"優寶骨","data"=>$bone));
+$data3 = json_encode($data3);
+$data4 = array(array("name"=>"優寶膚","data"=>$skin));
+$data4 = json_encode($data4);
 ?>
 <html lang="en">
 <head>
@@ -111,7 +134,11 @@ $total_pages = ceil($total_records/$pageRow_records);
   <!--內文-->
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
-      <div id="container"></div><!--折線圖-->
+      <div id="container"></div><!--折線圖--><br>
+      <div id="container1"></div><!--折線圖--><br>
+      <div id="container2"></div><!--折線圖--><br>
+      <div id="container3"></div><!--折線圖--><br>
+      <div id="container4"></div><!--折線圖--><br>
     <div style="display: table-cell;vertical-align: middle;"></div>
      <br>
       <table width="90%" border="0px" align="center" cellpadding="4" cellspacing="0">
@@ -192,7 +219,7 @@ var chart = Highcharts.chart('container',{
         type: 'column'
     },
     title: {
-        text: '寵物營養保健品',
+        text: '優寶睛',
         style:{
             fontSize:'24px'
         }
@@ -200,9 +227,7 @@ var chart = Highcharts.chart('container',{
     subtitle: {
     },
     xAxis: {
-        categories: [
-            "優寶睛", "優寶心", "優寶生", "優寶骨", "優寶膚"
-        ],
+        categories: ["超小型成犬", "小型成犬", "中型成犬", "大型成犬", "巨成犬", "約克夏", "西高地白梗", "西施", "巴哥", "貴賓", "雪納瑞", "馬爾濟斯", "拉不拉多", "黃金獵犬", "法國鬥牛犬", "臘腸", "吉娃娃", "英國鬥牛犬", "比熊犬", "米格魯"],
         crosshair: true,
         labels:{
             style:{
@@ -237,19 +262,207 @@ var chart = Highcharts.chart('container',{
             borderWidth: 0
         }
     },
-    series: [{
-        name: '小型犬',
-        data: [431, 456, 123, 244, 546]
-    }, {
-        name: '中型犬',
-        data: [424, 434, 345, 241, 612]
-    }, {
-        name: '大型犬',
-        data: [512, 616, 718, 412, 578]
-    }, {
-        name: '超大型犬',
-        data: [95, 123, 204, 367, 422]
-    }]
+    series: <?php echo $data; ?>,
+});
+var chart = Highcharts.chart('container1',{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '優寶心',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    subtitle: {
+    },
+    xAxis: {
+        categories: ["超小型成犬", "小型成犬", "中型成犬", "大型成犬", "巨成犬", "約克夏", "西高地白梗", "西施", "巴哥", "貴賓", "雪納瑞", "馬爾濟斯", "拉不拉多", "黃金獵犬", "法國鬥牛犬", "臘腸", "吉娃娃", "英國鬥牛犬", "比熊犬", "米格魯"],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    yAxis: {
+        min: 60,
+        title: {
+            text: '隻數',
+            style:{
+                fontSize:'18px'
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 隻<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: <?php echo $data1; ?>,
+});
+var chart = Highcharts.chart('container2',{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '優寶生',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    subtitle: {
+    },
+    xAxis: {
+        categories: ["超小型成犬", "小型成犬", "中型成犬", "大型成犬", "巨成犬", "約克夏", "西高地白梗", "西施", "巴哥", "貴賓", "雪納瑞", "馬爾濟斯", "拉不拉多", "黃金獵犬", "法國鬥牛犬", "臘腸", "吉娃娃", "英國鬥牛犬", "比熊犬", "米格魯"],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    yAxis: {
+        min: 60,
+        title: {
+            text: '隻數',
+            style:{
+                fontSize:'18px'
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 隻<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: <?php echo $data2; ?>,
+});
+var chart = Highcharts.chart('container3',{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '優寶骨',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    subtitle: {
+    },
+    xAxis: {
+        categories: ["超小型成犬", "小型成犬", "中型成犬", "大型成犬", "巨成犬", "約克夏", "西高地白梗", "西施", "巴哥", "貴賓", "雪納瑞", "馬爾濟斯", "拉不拉多", "黃金獵犬", "法國鬥牛犬", "臘腸", "吉娃娃", "英國鬥牛犬", "比熊犬", "米格魯"],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    yAxis: {
+        min: 60,
+        title: {
+            text: '隻數',
+            style:{
+                fontSize:'18px'
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 隻<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: <?php echo $data3; ?>,
+});
+var chart = Highcharts.chart('container4',{
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: '優寶膚',
+        style:{
+            fontSize:'24px'
+        }
+    },
+    subtitle: {
+    },
+    xAxis: {
+        categories: ["超小型成犬", "小型成犬", "中型成犬", "大型成犬", "巨成犬", "約克夏", "西高地白梗", "西施", "巴哥", "貴賓", "雪納瑞", "馬爾濟斯", "拉不拉多", "黃金獵犬", "法國鬥牛犬", "臘腸", "吉娃娃", "英國鬥牛犬", "比熊犬", "米格魯"],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    yAxis: {
+        min: 60,
+        title: {
+            text: '隻數',
+            style:{
+                fontSize:'18px'
+            }
+        },
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    },
+    tooltip: {
+        // head + 每个 point + footer 拼接成完整的 table
+        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 隻<br>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            borderWidth: 0
+        }
+    },
+    series: <?php echo $data4; ?>,
 });
 </script>
 </html>
