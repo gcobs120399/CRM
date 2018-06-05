@@ -236,7 +236,7 @@ var chart = Highcharts.chart('container', {
         name: '<span style="font-size:18px;">有購買</span>',
         type: 'column',
         yAxis: 1,
-        data: [1629,1264, 1462, 2158,1390],
+        data: [2161,1513,2151,2175,2213],
         tooltip: {
             valueSuffix: '<span style="font-size:18px;"> 個</span>',
             style: {fontSize:'18px'}
@@ -245,14 +245,14 @@ var chart = Highcharts.chart('container', {
         name: '<span style="font-size:18px;">無購買</span>',
         type: 'column',
         yAxis: 1,
-        data: [652, 506, 585, 863,556],
+        data: [2096,2994,2536,2643,2227],
         tooltip: {
             valueSuffix: '<span style="font-size:18px;"> 個</span>'
         },
     }, {
         name: '<span style="font-size:18px;">總人數</span>',
         type: 'spline',
-        data: [3462, 2164, 2834, 4202,2340],
+        data: [4257,4507,4687,4818,4440],
         tooltip: {
             valueSuffix: '<span style="font-size:18px;"> 人</span>'
         }
