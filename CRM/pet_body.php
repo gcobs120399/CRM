@@ -147,93 +147,93 @@ $total_pages1 = ceil($total_records1/$pageRow_records1);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客群寵物體型分析(男性)</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr>
-              <th width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
+              <th width="4%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
             </tr>
             <tr>
-             <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>超小型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>小型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>中型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>大型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巨型犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>約克夏</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西高地白梗</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西施</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巴哥</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>貴賓</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>雪納瑞</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>馬爾濟斯</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>拉不拉多</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>黃金獵犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>法國鬥牛犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>臘腸</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>吉娃娃</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>英國鬥牛犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>比熊犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>米格魯</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>超小型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>小型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>中型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>大型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巨型犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>約克夏</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西高地白梗</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西施</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巴哥</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>貴賓</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>雪納瑞</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>馬爾濟斯</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>拉不拉多</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>黃金獵犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>法國鬥牛犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>臘腸</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>吉娃娃</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>英國鬥牛犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>比熊犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>米格魯</p></td>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower["ago"];?></a></p>
               </td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d1"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d2"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d3"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d4"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d5"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d6"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d7"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d8"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d9"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d10"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d11"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d12"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d13"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d14"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d15"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d16"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d17"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d18"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d19"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower["d20"]; ?>
               </p></td>
                 </p></td>
@@ -249,93 +249,93 @@ $total_pages1 = ceil($total_records1/$pageRow_records1);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客群寵物體型分析(女性)</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr>
-              <th width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
+              <th width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;" rowspan="2"><p>年齡</p></th>
             </tr>
             <tr>
-             <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>超小型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>小型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>中型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>大型成犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巨型犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>約克夏</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西高地白梗</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西施</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巴哥</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>貴賓</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>雪納瑞</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>馬爾濟斯</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>拉不拉多</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>黃金獵犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>法國鬥牛犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>臘腸</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>吉娃娃</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>英國鬥牛犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>比熊犬</p></td>
-              <td width="5%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>米格魯</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>超小型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>小型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>中型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>大型成犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巨型犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>約克夏</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西高地白梗</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>西施</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>巴哥</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>貴賓</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>雪納瑞</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>馬爾濟斯</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>拉不拉多</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>黃金獵犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>法國鬥牛犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>臘腸</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>吉娃娃</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>英國鬥牛犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>比熊犬</p></td>
+              <td width="4.7%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>米格魯</p></td>
             </tr>
       <?php while($row_RecFlower1=mysql_fetch_assoc($RecFlower1)){ ?>
             <tr>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
                 <p><?php echo $row_RecFlower1["ago"];?></a></p>
               </td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d1"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d2"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d3"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d4"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d5"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d6"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d7"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d8"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d9"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d10"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d11"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d12"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d13"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d14"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d15"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d16"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d17"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d18"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d19"]; ?>
               </p></td>
-              <td width="5%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+              <td width="4.7%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
                 <?php echo $row_RecFlower1["d20"]; ?>
               </p></td>
                 </p></td>
