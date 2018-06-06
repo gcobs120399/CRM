@@ -32,7 +32,7 @@ if (isset($_GET['page'])) {
 //本頁開始記錄筆數 = (頁數-1)*每頁記錄筆數
 $startRow_records = ($num_pages -1) * $pageRow_records;
 //未加限制顯示筆數的SQL敘述句
-$query_RecFlower = "SELECT o_no,sex, COUNT(*) AS `B_count` FROM order1 GROUP BY o_no HAVING COUNT(*)>0";
+$query_RecFlower = "SELECT * FROM `order1` ORDER BY `o_no`";
 //加上限制顯示筆數的SQL敘述句，由本頁開始記錄筆數開始，每頁顯示預設筆數
 $query_limit_RecFlower = $query_RecFlower." LIMIT ".$startRow_records.", ".$pageRow_records;
 //以加上限制顯示筆數的SQL敘述句查詢資料到 $resultMember 中
@@ -122,9 +122,10 @@ $total_pages = ceil($total_records/$pageRow_records);
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">客戶活躍度</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
             <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>編號</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>顧客編號</p></th>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>性別</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>次數</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>年齡</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>訂單日期</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
@@ -135,8 +136,11 @@ $total_pages = ceil($total_records/$pageRow_records);
                 <?php echo $row_RecFlower["sex"]; ?>
               </p></td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["B_count"]; ?>
-                </p></td>
+                <?php echo $row_RecFlower["ago"]; ?>
+              </p></td>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["date"]; ?>
+              </p></td>
             <?php }?>
             </tr>
       <hr size="1" />

@@ -223,7 +223,7 @@ var chart = Highcharts.chart('container', {
     tooltip: {
         shared: true
     },
-    legend: {
+    /*legend: {
         layout: 'vertical',
         align: 'left',
         x: 300,
@@ -231,7 +231,7 @@ var chart = Highcharts.chart('container', {
         y: 60,
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-    },
+    },*/
     series: [{
         name: '<span style="font-size:18px;">有購買</span>',
         type: 'column',
@@ -250,7 +250,7 @@ var chart = Highcharts.chart('container', {
             valueSuffix: '<span style="font-size:18px;"> 個</span>'
         },
     }, {
-        name: '<span style="font-size:18px;">總瀏覽人數</span>',
+        name: '<span style="font-size:18px;">總人數</span>',
         type: 'spline',
         data: [4257,4507,4687,4818,4440],
         tooltip: {
