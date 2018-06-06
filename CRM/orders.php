@@ -44,15 +44,6 @@ $total_records = mysql_num_rows($all_RecFlower);
 //計算總頁數=(總筆數/每頁筆數)後無條件進位。
 $total_pages = ceil($total_records/$pageRow_records);
 
-
-
-
-for ($i=0; $i <12 ; $i++) {
-  $pre[$i]=rand(100,150);}
-for ($i=0; $i <12 ; $i++) {
-  $pre1[$i]=rand(100,150);}
-$pre = json_encode($pre);
-
 ?>
 <html lang="en">
 <head>
@@ -189,6 +180,9 @@ burger.addEventListener('click', function (e) {
 </script>
 <script>
 var chart = Highcharts.chart('container', {
+    chart: {
+        zoomType: 'xy'
+    },
     title: {
         text: '訂單金額分析',
         style:{
@@ -197,75 +191,116 @@ var chart = Highcharts.chart('container', {
     },
     subtitle: {
     },
-    yAxis: {
+    xAxis: [{
+        categories: ['1000', '2000', '3000', '4000','5000'],
+        crosshair: true,
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
+        }
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}',
+            style: {
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
+            }
+        },
         title: {
             text: '人數',
-            style:{
+            style: {
+                color: Highcharts.getOptions().colors[1],
                 fontSize:'18px'
             }
-        },
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
-    },xAxis: {
-        categories: ['400-450', '451-500', '501-550', '551-600'],
+        }
+    }, { // Secondary yAxis
         title: {
-            text: '價格',
-            style:{
+            text: '人數',
+            style: {
+                color: Highcharts.getOptions().colors[0],
                 fontSize:'18px'
             }
         },
-        labels:{
-              style:{
+        labels: {
+            format: '{value} 人',
+            style: {
+                color: Highcharts.getOptions().colors[0],
                 fontSize:'18px'
-              }
             }
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-    plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true,
-                allowOverlap: true // 允许数据标签重叠
+        },
+        opposite: true
+    }],
+    tooltip: {
+        shared: true,
+        labels:{
+            style:{
+                fontSize:'18px'
             }
         }
     },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 850,
+        verticalAlign: 'top',
+        y: 20,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    },
     series: [{
-        name: '20以下',
-        data: [1, 0, 2, 2]
+        name: '<span style="font-size:14px;">男性</span>',
+        type: 'column',
+        yAxis: 1,
+        data: [381 , 379, 384, 404, 388],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        },
+    },{
+        name: '<span style="font-size:14px;">女性',
+        type: 'column',
+        yAxis: 1,
+        data: [ 372, 314, 338, 344, 330],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        },
     }, {
-        name: '21-30',
-        data: [9, 4, 5, 5]
-    }, {
-        name: '31-40',
-        data: [6, 4, 3, 7]
-    }, {
-        name: '41-50',
-        data: [4, 3, 2, 4]
-    }, {
-        name: '51以上',
-        data: [18,10,8, 5]
-    }],
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom',
-                }
-            }
-        }],
-    }
+        name: '<span style="font-size:14px;">20以下</span>',
+        type: 'spline',
+        data: [ 38, 27, 47, 35, 41],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">21-30</span>',
+        type: 'spline',
+        data: [ 160, 168, 129, 159, 152],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">31-40</span>',
+        type: 'spline',
+        data: [ 115, 162, 133, 168, 158],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">41-50</span>',
+        type: 'spline',
+        data: [ 154, 117, 171, 167, 154],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">51以上</span>',
+        type: 'spline',
+        data: [ 39, 219, 242, 219, 212],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    }]
 });
 </script>
 </html>
