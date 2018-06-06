@@ -282,7 +282,7 @@ var chart = Highcharts.chart('container', {
         name: '<span style="font-size:14px;">女性',
         type: 'column',
         yAxis: 1,
-        data: [800,998,972,1035,1035],
+        data: [1000,998,972,1035,1035],
         tooltip: {
             valueSuffix: '<span style="font-size:14px;"> 人</span>'
         },

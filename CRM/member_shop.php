@@ -250,7 +250,7 @@ var chart = Highcharts.chart('container', {
             valueSuffix: '<span style="font-size:18px;"> 個</span>'
         },
     }, {
-        name: '<span style="font-size:18px;">總人數</span>',
+        name: '<span style="font-size:18px;">總瀏覽人數</span>',
         type: 'spline',
         data: [4257,4507,4687,4818,4440],
         tooltip: {
