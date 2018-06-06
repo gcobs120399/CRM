@@ -175,62 +175,127 @@ burger.addEventListener('click', function (e) {
 });
 </script>
 <script>
-var chart = Highcharts.chart('container',{
+var chart = Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        zoomType: 'xy'
     },
     title: {
         text: '客戶活躍度',
         style:{
-                fontSize:'24px'
-              }
+            fontSize:'24px'
+        }
     },
     subtitle: {
     },
-    xAxis: {
-        categories: [
-            '一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'
-        ],
+    xAxis: [{
+        categories: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
         crosshair: true,
         labels:{
-              style:{
-                fontSize:'18px'
-              }
-            }
-    },
-    yAxis: {
-
-        title: {
-            text: '次數',
             style:{
                 fontSize:'18px'
-              }
-        },
-        labels:{
-              style:{
-                fontSize:'18px'
-              }
             }
-    },
+        }
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}',
+            style: {
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
+            }
+        },
+        title: {
+            text: '人數',
+            style: {
+                color: Highcharts.getOptions().colors[1],
+                fontSize:'18px'
+            }
+        }
+    }, { // Secondary yAxis
+        title: {
+            text: '人數',
+            style: {
+                color: Highcharts.getOptions().colors[0],
+                fontSize:'18px'
+            }
+        },
+        labels: {
+            format: '{value} 人',
+            style: {
+                color: Highcharts.getOptions().colors[0],
+                fontSize:'18px'
+            }
+        },
+        opposite: true
+    }],
     tooltip: {
-        // head + 每个 point + footer 拼接成完整的 table
-        headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
-        pointFormat: '{series.name}:' +'{point.y:.1f} 次<br>',
-        footerFormat: '</table>',
         shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            borderWidth: 0
+        labels:{
+            style:{
+                fontSize:'18px'
+            }
         }
     },
+    /*legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 850,
+        verticalAlign: 'top',
+        y: 20,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+    },*/
     series: [{
-        name: '男',
-        data: [5, 1, 5, 3, 2, 3, 4, 7, 1, 5, 3, 3]
+        name: '<span style="font-size:14px;">男性</span>',
+        type: 'column',
+        yAxis: 1,
+        data: [202,165,165,157,164,147,158,147,174,155,136,140],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        },
+    },{
+        name: '<span style="font-size:14px;">女性',
+        type: 'column',
+        yAxis: 1,
+        data: [167,140,161,145,147,130,128,162,121,122,121,135],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        },
     }, {
-        name: '女',
-        data: [3, 2, 7, 4, 2, 6, 3, 6, 4, 6, 6, 9]
+        name: '<span style="font-size:14px;">20以下</span>',
+        type: 'spline',
+        data: [22,17,12,17,16,13,14,16,17,15,12,13],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">21-30</span>',
+        type: 'spline',
+        data: [75,58,82,60,63,59,61,51,70,65,56,48],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">31-40</span>',
+        type: 'spline',
+        data: [78,68,62,73,59,62,66,68,55,51,53,69],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">41-50</span>',
+        type: 'spline',
+        data: [75,64,72,55,80,54,57,78,55,57,55,52],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
+    },{
+        name: '<span style="font-size:14px;">51以上</span>',
+        type: 'spline',
+        data: [119,98,95,97,93,89,88,96,98,89,81,93],
+        tooltip: {
+            valueSuffix: '<span style="font-size:14px;"> 人</span>'
+        }
     }]
 });
 </script>

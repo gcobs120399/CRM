@@ -240,14 +240,14 @@ var chart = Highcharts.chart('container', {
             }
         }
     },
-    legend: {
+    /*legend: {
         layout: 'vertical',
         align: 'left',
         x: 850,
         verticalAlign: 'top',
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-    },
+    },*/
     series: [{
         name: '<span style="font-size:14px;">男性</span>',
         type: 'column',
