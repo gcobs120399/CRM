@@ -17,7 +17,7 @@ $query_RecMember = "SELECT * FROM `memberdata` WHERE `m_username`='".$_SESSION["
 $RecMember = mysql_query($query_RecMember);
 $row_RecMember=mysql_fetch_assoc($RecMember);
 
-$query_RecFlower = "SELECT * FROM `food` ORDER BY `o_no`,`buff`";
+$query_RecFlower = "SELECT * FROM `food`";
 $RecFlower = mysql_query($query_RecFlower);
 $row_RecFlower=mysql_fetch_assoc($RecFlower);
 //選取所有一般會員資料
@@ -120,25 +120,33 @@ $total_pages = ceil($total_records/$pageRow_records);
       <tr valign="top">
         <td class="tdrline"><p class="title" style="text-align: center;font-size: 24px;">合買分析</p>
           <table width="100%"  border="1px" cellpadding="0" cellspacing="0" bgcolor="#F0F0F0" >
-            <tr >
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>編號</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>性別</p></th>
-              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>飼料(加強效果)</p></th>
+            <tr>
               <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>保健品</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶膚</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶骨</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶心</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶生</p></th>
+              <th width="10%" bgcolor="#81D4FA" style="text-align:center;font-size: 20px;"><p>優寶睛</p></th>
             </tr>
       <?php while($row_RecFlower=mysql_fetch_assoc($RecFlower)){ ?>
             <tr>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
-                <p><?php echo $row_RecFlower["o_no"];?></a></p>
+                <p><?php echo $row_RecFlower["medicine"];?></a></p>
+              </td>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;">
+                <p><?php echo $row_RecFlower["skin"];?></a></p>
               </td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["sex"]; ?>
+                <?php echo $row_RecFlower["bron"]; ?>
               </p></td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["buff"]; ?>
+                <?php echo $row_RecFlower["heart"]; ?>
               </p></td>
               <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
-                <?php echo $row_RecFlower["medicine"]; ?>
+                <?php echo $row_RecFlower["body"]; ?>
+              </p></td>
+              <td width="10%" align="center" bgcolor="#FFFFFF" style="font-size: 20px;"><p>
+                <?php echo $row_RecFlower["eye"]; ?>
               </p></td>
             <?php }?>
             </tr>
@@ -191,7 +199,7 @@ var chart = Highcharts.chart('container',{
     subtitle: {
     },
     xAxis: {
-        categories: ['增重','腎臟管理','血糖管理','肥胖代謝'],
+        categories: ['優寶膚','優寶骨','優寶心','優寶生','優寶睛'],
         crosshair: true,
         labels:{
             style:{
@@ -200,8 +208,9 @@ var chart = Highcharts.chart('container',{
         }
     },
     yAxis: {
+        min:150,
         title: {
-            text: '人數',
+            text: '數量',
             style:{
                 fontSize:'18px'
             }
@@ -215,7 +224,7 @@ var chart = Highcharts.chart('container',{
     tooltip: {
         // head + 每个 point + footer 拼接成完整的 table
         headerFormat: '<span style="font-size:14px">{point.key}</span><table><br>',
-        pointFormat: '{series.name}:' +'{point.y:.1f} 人<br>',
+        pointFormat: '{series.name}:' +'{point.y:.1f} 個<br>',
         footerFormat: '</table>',
         shared: true,
         useHTML: true
@@ -226,20 +235,20 @@ var chart = Highcharts.chart('container',{
         }
     },
     series: [{
-        name: '優寶心',
-        data: [5, 7, 1, 1]
-    }, {
-        name: '優寶睛',
-        data: [8, 5, 9, 3]
-    }, {
-        name: '優寶身',
-        data: [ 4, 4, 4, 10]
+        name: '優寶膚',
+        data: [ 257, 292, 310, 297, 288]
     }, {
         name: '優寶骨',
-        data: [ 7, 5, 4, 4]
+        data: [ 286, 298, 287, 306, 290]
     }, {
-        name: '優寶膚',
-        data: [ 6, 6, 1, 6]
+        name: '優寶心',
+        data: [ 287, 292, 291, 328, 275]
+    }, {
+        name: '優寶生',
+        data: [ 293, 286, 278, 294, 285]
+    }, {
+        name: '優寶睛',
+        data: [ 295, 201, 254, 286, 286]
     }]
 });
 </script>
