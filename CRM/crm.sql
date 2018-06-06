@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-06 07:01:14
+-- 產生時間： 2018-06-06 08:26:34
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -3978,26 +3978,82 @@ INSERT INTO `path` (`p_id`, `p_month`, `p_fb`, `p_momo`, `p_find`, `p_blog`) VAL
 CREATE TABLE `pet_body` (
   `p_id` int(10) UNSIGNED NOT NULL,
   `ago` text COLLATE utf8_unicode_ci NOT NULL,
-  `w1` int(11) NOT NULL COMMENT '小',
-  `w2` int(11) NOT NULL COMMENT '中',
-  `w3` int(11) NOT NULL COMMENT '大',
-  `w4` int(11) NOT NULL COMMENT '鈔大',
-  `b1` int(11) NOT NULL COMMENT '小',
-  `b2` int(11) NOT NULL COMMENT '中',
-  `b3` int(11) NOT NULL COMMENT '大',
-  `b4` int(11) NOT NULL COMMENT '超大'
+  `sex` text COLLATE utf8_unicode_ci NOT NULL,
+  `d1` int(11) NOT NULL,
+  `d2` int(11) NOT NULL,
+  `d3` int(11) NOT NULL,
+  `d4` int(11) NOT NULL,
+  `d5` int(11) NOT NULL,
+  `d6` int(11) NOT NULL,
+  `d7` int(11) NOT NULL,
+  `d8` int(11) NOT NULL,
+  `d9` int(11) NOT NULL,
+  `d10` int(11) NOT NULL,
+  `d11` int(11) NOT NULL,
+  `d12` int(11) NOT NULL,
+  `d13` int(11) NOT NULL,
+  `d14` int(11) NOT NULL,
+  `d15` int(11) NOT NULL,
+  `d16` int(11) NOT NULL,
+  `d17` int(11) NOT NULL,
+  `d18` int(11) NOT NULL,
+  `d19` int(11) NOT NULL,
+  `d20` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 資料表的匯出資料 `pet_body`
 --
 
-INSERT INTO `pet_body` (`p_id`, `ago`, `w1`, `w2`, `w3`, `w4`, `b1`, `b2`, `b3`, `b4`) VALUES
-(1, '20以下', 120, 122, 190, 55, 95, 90, 185, 12),
-(2, '21-30', 210, 250, 336, 150, 170, 210, 260, 120),
-(3, '31-40', 325, 410, 500, 260, 255, 329, 355, 256),
-(4, '41-50', 220, 260, 350, 158, 180, 200, 270, 135),
-(5, '51以上', 125, 100, 200, 50, 100, 85, 190, 15);
+INSERT INTO `pet_body` (`p_id`, `ago`, `sex`, `d1`, `d2`, `d3`, `d4`, `d5`, `d6`, `d7`, `d8`, `d9`, `d10`, `d11`, `d12`, `d13`, `d14`, `d15`, `d16`, `d17`, `d18`, `d19`, `d20`) VALUES
+(1, '20以下', 'F', 4, 0, 1, 8, 0, 0, 4, 11, 4, 0, 11, 16, 0, 4, 0, 12, 13, 4, 0, 4),
+(2, '21-30', 'F', 23, 22, 14, 27, 22, 15, 22, 17, 20, 7, 27, 31, 18, 22, 12, 0, 30, 11, 11, 25),
+(3, '31-40', 'F', 18, 20, 15, 37, 23, 26, 34, 8, 30, 24, 15, 11, 14, 25, 4, 11, 25, 12, 15, 13),
+(4, '41-50', 'F', 20, 29, 4, 19, 18, 16, 21, 19, 15, 8, 11, 26, 4, 23, 14, 11, 7, 14, 10, 14),
+(5, '51以上', 'F', 43, 21, 7, 22, 22, 33, 33, 55, 22, 27, 29, 37, 11, 27, 30, 15, 35, 12, 23, 36);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `pet_body_m`
+--
+
+CREATE TABLE `pet_body_m` (
+  `p_id` int(11) UNSIGNED NOT NULL,
+  `ago` text COLLATE utf8_unicode_ci NOT NULL,
+  `sex` text COLLATE utf8_unicode_ci NOT NULL,
+  `d1` int(11) NOT NULL,
+  `d2` int(11) NOT NULL,
+  `d3` int(11) NOT NULL,
+  `d4` int(11) NOT NULL,
+  `d5` int(11) NOT NULL,
+  `d6` int(11) NOT NULL,
+  `d7` int(11) NOT NULL,
+  `d8` int(11) NOT NULL,
+  `d9` int(11) NOT NULL,
+  `d10` int(11) NOT NULL,
+  `d11` int(11) NOT NULL,
+  `d12` int(11) NOT NULL,
+  `d13` int(11) NOT NULL,
+  `d14` int(11) NOT NULL,
+  `d15` int(11) NOT NULL,
+  `d16` int(11) NOT NULL,
+  `d17` int(11) NOT NULL,
+  `d18` int(11) NOT NULL,
+  `d19` int(11) NOT NULL,
+  `d20` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `pet_body_m`
+--
+
+INSERT INTO `pet_body_m` (`p_id`, `ago`, `sex`, `d1`, `d2`, `d3`, `d4`, `d5`, `d6`, `d7`, `d8`, `d9`, `d10`, `d11`, `d12`, `d13`, `d14`, `d15`, `d16`, `d17`, `d18`, `d19`, `d20`) VALUES
+(1, '20以下', 'M', 3, 2, 0, 0, 0, 2, 1, 2, 2, 1, 3, 1, 1, 1, 1, 0, 0, 1, 2, 2),
+(2, '21-30', 'M', 4, 5, 2, 8, 7, 0, 6, 3, 8, 2, 6, 8, 7, 5, 9, 8, 4, 6, 3, 8),
+(3, '31-40', 'M', 3, 6, 3, 7, 7, 6, 2, 6, 4, 10, 3, 7, 4, 13, 4, 6, 4, 4, 3, 6),
+(4, '41-50', 'M', 5, 9, 3, 6, 6, 6, 6, 9, 7, 9, 5, 5, 10, 5, 2, 12, 4, 6, 5, 7),
+(5, '51以上', 'M', 10, 8, 7, 14, 8, 9, 6, 10, 8, 7, 9, 4, 6, 4, 11, 7, 9, 10, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -4162,6 +4218,12 @@ ALTER TABLE `pet_body`
   ADD PRIMARY KEY (`p_id`);
 
 --
+-- 資料表索引 `pet_body_m`
+--
+ALTER TABLE `pet_body_m`
+  ADD PRIMARY KEY (`p_id`);
+
+--
 -- 資料表索引 `pet_medicine`
 --
 ALTER TABLE `pet_medicine`
@@ -4232,7 +4294,12 @@ ALTER TABLE `path`
 -- 使用資料表 AUTO_INCREMENT `pet_body`
 --
 ALTER TABLE `pet_body`
-  MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- 使用資料表 AUTO_INCREMENT `pet_body_m`
+--
+ALTER TABLE `pet_body_m`
+  MODIFY `p_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用資料表 AUTO_INCREMENT `pet_medicine`
 --
