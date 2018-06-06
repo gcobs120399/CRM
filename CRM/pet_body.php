@@ -124,20 +124,19 @@ $total_pages1 = ceil($total_records1/$pageRow_records1);
   </div>
 </nav>
 <br><br><br>
-<h1 style="text-align:center;">客群寵物體型分析</h1>
+<h1 style="text-align:center;">客群寵物體型分析(表)</h1>
 <hr>
 <div class=" col-xs-3 col-md-3" style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;">
   <a href="pet_medicine.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物營養保健品分析</a><br>
-  <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析</a><br>
-  <!--<a href="pet_personal_pic.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(圖)</a><br>
-  <a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(表)</a><br>
+  <a href="pet_body_pic.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析(圖)</a><br>
+  <a href="pet_body.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客群寵物體型分析(表)</a><br>
+  <!--<a href="pet_personal.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">客製化類別分析(表)</a><br>
   <a href="pet_pet.php" style="text-align:center;font-size: 30px;font-family: 微軟正黑體;font-weight: bold;color: red"><img src="newimg/20.png" alt="LOGO" width="80" height="50">寵物及客製化分析</a><br>-->
 </div>
 <div class="container col-xs-8 col-md-8">
   <!--內文-->
   <div style="background: rgba(100%,100%,100%,0.6); margin: 0 auto;"><!--div放白色背景透明度60%開始-->
     <div style="margin-left:0px auto;margin-right:0px auto;">
-      <div id="container"></div><!--折線圖-->
     <div style="display: table-cell;vertical-align: middle;"></div>
      <br>
       <table width="100%" border="0px" align="center" cellpadding="4" cellspacing="0">
@@ -361,126 +360,6 @@ burger.addEventListener('click', function (e) {
     e.preventDefault();
     document.body.classList.toggle('open');
     burger.classList.toggle('open');
-});
-</script>
-<script>
-var chart = Highcharts.chart('container', {
-    chart: {
-        zoomType: 'xy'
-    },
-    title: {
-        text: '客群寵物體型分析',
-        style:{
-            fontSize:'24px'
-        }
-    },
-    subtitle: {
-    },
-    xAxis: [{
-        categories: ['小型犬', '中型犬', '大型犬', '超大型犬'],
-        crosshair: true,
-        labels:{
-            style:{
-                fontSize:'18px'
-            }
-        }
-    }],
-    yAxis: [{ // Primary yAxis
-        labels: {
-            format: '{value}',
-            style: {
-                color: Highcharts.getOptions().colors[1],
-                fontSize:'18px'
-            }
-        },
-        title: {
-            text: '人數',
-            style: {
-                color: Highcharts.getOptions().colors[1],
-                fontSize:'18px'
-            }
-        }
-    }, { // Secondary yAxis
-        title: {
-            text: '人數',
-            style: {
-                color: Highcharts.getOptions().colors[0],
-                fontSize:'18px'
-            }
-        },
-        labels: {
-            format: '{value} 人',
-            style: {
-                color: Highcharts.getOptions().colors[0],
-                fontSize:'18px'
-            }
-        },
-        opposite: true
-    }],
-    tooltip: {
-        shared: true
-    },
-    /*legend: {
-        layout: 'vertical',
-        align: 'left',
-        x: 850,
-        verticalAlign: 'top',
-        y: 50,
-        floating: true,
-        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-    },*/
-    series: [{
-        name: '<span style="font-size:14px;">男性</span>',
-        type: 'column',
-        yAxis: 1,
-        data: [800,914, 1260, 538],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        },
-    },{
-        name: '<span style="font-size:14px;">女性</span>',
-        type: 'column',
-        yAxis: 1,
-        data: [1000, 1142, 1576, 673],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        },
-    }, {
-        name: '<span style="font-size:14px;">20以下</span>',
-        type: 'spline',
-        data: [215, 212, 375, 67],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">21-30</span>',
-        type: 'spline',
-        data: [380, 460, 596, 280],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">31-40</span>',
-        type: 'spline',
-        data: [580, 739, 855, 516],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">41-50</span>',
-        type: 'spline',
-        data: [400, 460, 620, 293],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    },{
-        name: '<span style="font-size:14px;">51以上</span>',
-        type: 'spline',
-        data: [225, 185,390, 75],
-        tooltip: {
-            valueSuffix: '<span style="font-size:14px;"> 人</span>'
-        }
-    }]
 });
 </script>
 </html>
