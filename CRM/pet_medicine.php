@@ -236,7 +236,7 @@ var chart = Highcharts.chart('container',{
         }
     },
     yAxis: {
-        min: 60,
+        min: 40,
         title: {
             text: '隻數',
             style:{
@@ -286,7 +286,7 @@ var chart = Highcharts.chart('container1',{
         }
     },
     yAxis: {
-        min: 60,
+        min: 40,
         title: {
             text: '隻數',
             style:{
@@ -336,7 +336,7 @@ var chart = Highcharts.chart('container2',{
         }
     },
     yAxis: {
-        min: 60,
+        min: 40,
         title: {
             text: '隻數',
             style:{
@@ -386,7 +386,7 @@ var chart = Highcharts.chart('container3',{
         }
     },
     yAxis: {
-        min: 60,
+        min: 40,
         title: {
             text: '隻數',
             style:{
@@ -436,7 +436,7 @@ var chart = Highcharts.chart('container4',{
         }
     },
     yAxis: {
-        min: 60,
+        min: 40,
         title: {
             text: '隻數',
             style:{
