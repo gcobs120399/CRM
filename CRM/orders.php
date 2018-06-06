@@ -245,7 +245,6 @@ var chart = Highcharts.chart('container', {
         align: 'left',
         x: 850,
         verticalAlign: 'top',
-        y: 20,
         floating: true,
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
     },
