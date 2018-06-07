@@ -205,10 +205,10 @@ var chart = Highcharts.chart('container', {
         type: 'pie',
         name: '促銷成效比例',
         data: [
-            ['是', 12.2],
+            ['是', 3],
             {
                 name: '否',
-                y: 87.8,
+                y: 97,
                 sliced: true,  // 默认突出
                 selected: true // 默认选中 
             }
