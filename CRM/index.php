@@ -49,7 +49,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>顧客關係管理之寵物飼料管理</title>
+<title>顧客關係管理之寵物保健品管理</title>
 <link rel="icon" href="./newimg/02.png">
 <!--呆-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
