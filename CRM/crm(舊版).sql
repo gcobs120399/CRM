@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018-06-07 04:04:28
+-- 產生時間： 2018-06-07 03:40:49
 -- 伺服器版本: 10.1.13-MariaDB
 -- PHP 版本： 5.6.23
 
@@ -19,6 +19,61 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `crm`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `apparatus`
+--
+
+CREATE TABLE `apparatus` (
+  `a_id` int(255) UNSIGNED NOT NULL,
+  `a_pc` int(11) NOT NULL,
+  `a_phone` int(11) NOT NULL,
+  `a_date` date NOT NULL,
+  `a_month` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `apparatus`
+--
+
+INSERT INTO `apparatus` (`a_id`, `a_pc`, `a_phone`, `a_date`, `a_month`) VALUES
+(1, 86, 83, '0000-00-00', '一月'),
+(2, 89, 88, '0000-00-00', '二月'),
+(3, 90, 98, '0000-00-00', '三月'),
+(4, 89, 93, '0000-00-00', '四月'),
+(5, 100, 106, '0000-00-00', '五月'),
+(6, 83, 84, '0000-00-00', '六月'),
+(7, 96, 105, '0000-00-00', '七月'),
+(8, 106, 104, '0000-00-00', '八月'),
+(9, 103, 91, '0000-00-00', '九月'),
+(10, 110, 83, '0000-00-00', '十月'),
+(11, 95, 106, '0000-00-00', '十一月'),
+(12, 102, 92, '0000-00-00', '十二月');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `area`
+--
+
+CREATE TABLE `area` (
+  `a_id` int(10) UNSIGNED NOT NULL,
+  `area` text COLLATE utf8_unicode_ci NOT NULL,
+  `a_people` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `area`
+--
+
+INSERT INTO `area` (`a_id`, `area`, `a_people`) VALUES
+(1, '北部', 2270),
+(2, '中部', 2029),
+(3, '南部', 9732),
+(4, '東部', 2076),
+(5, '外島', 77);
 
 -- --------------------------------------------------------
 
@@ -46,6 +101,81 @@ INSERT INTO `food` (`f_id`, `medicine`, `skin`, `bron`, `heart`, `body`, `eye`) 
 (3, '優寶心', 287, 292, 291, 328, 275),
 (4, '優寶生', 293, 286, 278, 294, 285),
 (5, '優寶睛', 295, 201, 254, 286, 286);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `member`
+--
+
+CREATE TABLE `member` (
+  `m_id` int(10) UNSIGNED NOT NULL,
+  `m_on` int(11) NOT NULL,
+  `sex` enum('男','女') COLLATE utf8_unicode_ci NOT NULL,
+  `ago` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `member`
+--
+
+INSERT INTO `member` (`m_id`, `m_on`, `sex`, `ago`) VALUES
+(1, 1, '男', 26),
+(2, 2, '男', 63),
+(3, 3, '男', 43),
+(4, 4, '女', 27),
+(5, 7, '女', 34),
+(6, 8, '男', 63),
+(7, 9, '女', 38),
+(8, 11, '女', 22),
+(9, 12, '男', 39),
+(10, 13, '女', 19),
+(11, 16, '女', 61),
+(12, 18, '男', 37),
+(13, 19, '女', 34),
+(14, 24, '女', 19),
+(15, 27, '男', 26),
+(16, 30, '男', 36),
+(17, 32, '男', 46),
+(18, 33, '女', 28),
+(19, 35, '女', 48),
+(20, 36, '女', 58),
+(21, 39, '女', 52),
+(22, 40, '男', 20),
+(23, 42, '女', 62),
+(24, 45, '男', 40),
+(25, 46, '女', 43),
+(26, 51, '男', 21),
+(27, 52, '女', 32),
+(28, 53, '女', 37),
+(29, 57, '女', 31),
+(30, 58, '女', 21),
+(31, 59, '女', 35),
+(32, 60, '男', 61),
+(33, 62, '男', 45),
+(34, 63, '女', 58),
+(35, 64, '男', 36),
+(36, 65, '女', 28),
+(37, 68, '女', 53),
+(38, 70, '女', 44),
+(39, 71, '女', 19),
+(40, 73, '女', 24),
+(41, 75, '女', 23),
+(42, 76, '女', 54),
+(43, 78, '女', 62),
+(44, 80, '男', 57),
+(45, 82, '女', 25),
+(46, 83, '男', 65),
+(47, 85, '女', 58),
+(48, 87, '男', 61),
+(49, 89, '男', 46),
+(50, 91, '女', 27),
+(51, 92, '女', 62),
+(52, 95, '女', 64),
+(53, 96, '男', 51),
+(54, 98, '男', 65),
+(55, 99, '男', 26),
+(56, 100, '男', 35);
 
 -- --------------------------------------------------------
 
@@ -3809,6 +3939,39 @@ INSERT INTO `order1` (`o_id`, `o_no`, `sex`, `ago`, `money`, `date`, `o_buy`, `d
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `path`
+--
+
+CREATE TABLE `path` (
+  `p_id` int(10) UNSIGNED NOT NULL,
+  `p_month` text COLLATE utf8_unicode_ci NOT NULL,
+  `p_fb` double NOT NULL,
+  `p_momo` double NOT NULL,
+  `p_find` double NOT NULL,
+  `p_blog` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `path`
+--
+
+INSERT INTO `path` (`p_id`, `p_month`, `p_fb`, `p_momo`, `p_find`, `p_blog`) VALUES
+(1, '一月', 89.9, 93.6, 88.9, 92.4),
+(2, '二月', 91.5, 88.8, 88.8, 93.2),
+(3, '三月', 106.4, 98.5, 99.3, 84.5),
+(4, '四月', 129.2, 93.4, 101.4, 99.7),
+(5, '五月', 134, 106, 117, 92.6),
+(6, '六月', 156, 84.5, 98.3, 1.5),
+(7, '七月', 135.6, 105, 99, 87.4),
+(8, '八月', 148.5, 104.3, 89.6, 90.4),
+(9, '九月', 166.4, 91.2, 112.4, 97.6),
+(10, '十月', 154.1, 83.5, 95.2, 99.1),
+(11, '十一月', 95.6, 106.6, 109.3, 106.8),
+(12, '十二月', 105.4, 92.3, 91.2, 89.1);
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `pet_body`
 --
 
@@ -3959,15 +4122,63 @@ INSERT INTO `shop` (`s_id`, `proudct`, `s_y`, `s_n`, `s_all`) VALUES
 (4, '優寶膚', 2175, 2643, 4818),
 (5, '優寶身', 2213, 2227, 4440);
 
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `stay`
+--
+
+CREATE TABLE `stay` (
+  `s_id` int(10) UNSIGNED NOT NULL,
+  `s_month` text COLLATE utf8_unicode_ci NOT NULL,
+  `s_count` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `stay`
+--
+
+INSERT INTO `stay` (`s_id`, `s_month`, `s_count`) VALUES
+(1, '一月', 25),
+(2, '二月', 29.9),
+(3, '三月', 29.5),
+(4, '四月', 30.5),
+(5, '五月', 28.4),
+(6, '六月', 24.5),
+(7, '七月', 25.2),
+(8, '八月', 26.5),
+(9, '九月', 23.3),
+(10, '十月', 24.3),
+(11, '十一月', 26.9),
+(12, '十二月', 29.6);
+
 --
 -- 已匯出資料表的索引
 --
+
+--
+-- 資料表索引 `apparatus`
+--
+ALTER TABLE `apparatus`
+  ADD PRIMARY KEY (`a_id`);
+
+--
+-- 資料表索引 `area`
+--
+ALTER TABLE `area`
+  ADD PRIMARY KEY (`a_id`);
 
 --
 -- 資料表索引 `food`
 --
 ALTER TABLE `food`
   ADD PRIMARY KEY (`f_id`);
+
+--
+-- 資料表索引 `member`
+--
+ALTER TABLE `member`
+  ADD PRIMARY KEY (`m_id`);
 
 --
 -- 資料表索引 `memberdata`
@@ -3995,6 +4206,12 @@ ALTER TABLE `order1`
   ADD PRIMARY KEY (`o_id`);
 
 --
+-- 資料表索引 `path`
+--
+ALTER TABLE `path`
+  ADD PRIMARY KEY (`p_id`);
+
+--
 -- 資料表索引 `pet_body`
 --
 ALTER TABLE `pet_body`
@@ -4019,14 +4236,35 @@ ALTER TABLE `shop`
   ADD PRIMARY KEY (`s_id`);
 
 --
+-- 資料表索引 `stay`
+--
+ALTER TABLE `stay`
+  ADD PRIMARY KEY (`s_id`);
+
+--
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
 
+--
+-- 使用資料表 AUTO_INCREMENT `apparatus`
+--
+ALTER TABLE `apparatus`
+  MODIFY `a_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- 使用資料表 AUTO_INCREMENT `area`
+--
+ALTER TABLE `area`
+  MODIFY `a_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用資料表 AUTO_INCREMENT `food`
 --
 ALTER TABLE `food`
   MODIFY `f_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- 使用資料表 AUTO_INCREMENT `member`
+--
+ALTER TABLE `member`
+  MODIFY `m_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- 使用資料表 AUTO_INCREMENT `memberdata`
 --
@@ -4048,6 +4286,11 @@ ALTER TABLE `mem_buy`
 ALTER TABLE `order1`
   MODIFY `o_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3635;
 --
+-- 使用資料表 AUTO_INCREMENT `path`
+--
+ALTER TABLE `path`
+  MODIFY `p_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
 -- 使用資料表 AUTO_INCREMENT `pet_body`
 --
 ALTER TABLE `pet_body`
@@ -4067,6 +4310,11 @@ ALTER TABLE `pet_medicine`
 --
 ALTER TABLE `shop`
   MODIFY `s_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- 使用資料表 AUTO_INCREMENT `stay`
+--
+ALTER TABLE `stay`
+  MODIFY `s_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
