@@ -114,7 +114,7 @@ burger.addEventListener('click', function (e) {
 <script>
 var chart = Highcharts.chart('container', {
     title: {
-        text: '20以下'
+        text: '20歲以下'
     },
     tooltip: {
         headerFormat: '<span style="font-size:18px;">{series.name}</span><br>',
@@ -132,7 +132,7 @@ var chart = Highcharts.chart('container', {
     },
     series: [{
         type: 'pie',
-        name: '20以下',
+        name: '20歲以下',
         data: [
             ['超小型成犬', 7.84],
             ['小型成犬', 3.92],
@@ -164,7 +164,7 @@ var chart = Highcharts.chart('container', {
 });
 var chart = Highcharts.chart('container1', {
     title: {
-        text: '21-30'
+        text: '21歲-30歲'
     },
     tooltip: {
         headerFormat: '<span style="font-size:18px;">{series.name}</span><br>',
@@ -182,7 +182,7 @@ var chart = Highcharts.chart('container1', {
     },
     series: [{
         type: 'pie',
-        name: '21-30',
+        name: '21歲-30歲',
         data: [
             ['超小型成犬', 4.65],
             ['小型成犬', 5.12],
@@ -219,7 +219,7 @@ var chart = Highcharts.chart('container1', {
 });
 var chart = Highcharts.chart('container2', {
     title: {
-        text: '31-40'
+        text: '31歲-40歲'
     },
     tooltip: {
         headerFormat: '<span style="font-size:18px;">{series.name}</span><br>',
@@ -237,7 +237,7 @@ var chart = Highcharts.chart('container2', {
     },
     series: [{
         type: 'pie',
-        name: '31-40',
+        name: '31歲-40歲',
         data: [
             ['超小型成犬', 3.79],
             ['小型成犬', 5.21],
@@ -269,7 +269,7 @@ var chart = Highcharts.chart('container2', {
 });
 var chart = Highcharts.chart('container3', {
     title: {
-        text: '41-50'
+        text: '41歲-50歲'
     },
     tooltip: {
         headerFormat: '<span style="font-size:18px;">{series.name}</span><br>',
@@ -287,7 +287,7 @@ var chart = Highcharts.chart('container3', {
     },
     series: [{
         type: 'pie',
-        name: '41-50',
+        name: '41歲-50歲',
         data: [
             ['超小型成犬', 5.21],
             {
@@ -319,7 +319,7 @@ var chart = Highcharts.chart('container3', {
 });
 var chart = Highcharts.chart('container4', {
     title: {
-        text: '51以上'
+        text: '51歲以上'
     },
     tooltip: {
         headerFormat: '<span style="font-size:18px;">{series.name}</span><br>',
@@ -337,7 +337,7 @@ var chart = Highcharts.chart('container4', {
     },
     series: [{
         type: 'pie',
-        name: '51以上',
+        name: '51歲以上',
         data: [
             ['超小型成犬', 7.05],
             ['小型成犬', 4.49],
