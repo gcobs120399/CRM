@@ -76,12 +76,12 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
         <span class="icon-bar"></span> 
         <span class="icon-bar"></span> 
       </button> 
-      <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
+      <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物保健品管理</a>
     </div>
   </div>
 </nav>
 <br><br>
-<h1 style="text-align:center;"><img src="newimg/18.png" alt="LOGO" width="80" height="50">顧客關係管理之寵物飼料管理</h1>
+<h1 style="text-align:center;"><img src="newimg/18.png" alt="LOGO" width="80" height="50">顧客關係管理之寵物保健品管理</h1>
 <div class="col-xs-2"></div>
 <div style="background: rgba(100%,100%,100%,0.6);" class="col-xs-12"><!--div放白色背景透明度60%開始-->
 <table width="550" border="0" align="center" cellpadding="4" cellspacing="0">
@@ -118,7 +118,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
     </td>
   </tr>
   <tr>
-    <td align="center" class="trademark" style="font-size: 18px;">© 2018 顧客關係管理之寵物飼料管理 ©</td>
+    <td align="center" class="trademark" style="font-size: 18px;">© 2018 顧客關係管理之寵物保健品管理 ©</td>
   </tr>
 </table>
 </div><!--div放白色背景透明度60%結束-->

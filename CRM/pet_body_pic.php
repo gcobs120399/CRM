@@ -19,7 +19,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 ?>
 <html lang="en">
 <head>
-  <title>顧客關係管理之寵物飼料管理</title>
+  <title>顧客關係管理之寵物保健品管理</title>
 <!--呆的巡覽列-->
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +44,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header"> 
-     <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物飼料管理</a>
+     <a class="navbar-brand" href="index.php" style="font-family: 微軟正黑體;font-size: 30px">顧客關係管理之寵物保健品管理</a>
     </div>
   </div>
 </nav>
@@ -94,7 +94,7 @@ $row_RecMember=mysql_fetch_assoc($RecMember);
 </div>
 </div><!--div放白色透明度60%結束-->
 <div class=" col-xs-2 col-md-2"></div>
-<div class="col-xs-12 col-md-12" style="text-align: center;">© 2018 顧客關係管理之寵物飼料管理 ©</div>
+<div class="col-xs-12 col-md-12" style="text-align: center;">© 2018 顧客關係管理之寵物保健品管理 ©</div>
 </div>
 <!--呆的巡覽列-->
 <script src="./js/jquery.min.js"></script>
