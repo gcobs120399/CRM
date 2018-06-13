@@ -82,8 +82,8 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
 </nav>
 <br><br>
 <h1 style="text-align:center;"><img src="newimg/18.png" alt="LOGO" width="80" height="50">顧客關係管理之寵物保健品管理</h1>
-<div class="col-xs-2"></div>
-<div style="background: rgba(100%,100%,100%,0.6);" class="col-xs-12"><!--div放白色背景透明度60%開始-->
+<div class="col-xs-3"></div>
+<div style="background: rgba(100%,100%,100%,0.6);" class="col-xs-6"><!--div放白色背景透明度60%開始-->
 <table width="550" border="0" align="center" cellpadding="4" cellspacing="0">
   <tr>
     <td class="tdbline"><h2>系統登入</h2></td>
@@ -122,6 +122,7 @@ if(isset($_POST["username"]) && isset($_POST["passwd"])){
   </tr>
 </table>
 </div><!--div放白色背景透明度60%結束-->
+<div class="col-xs-3"></div>
 <!--呆-->
 <script src="./js/jquery.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
